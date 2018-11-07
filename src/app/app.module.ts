@@ -10,6 +10,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/login/register.component';
 
+import { UserService } from './services/user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import { RegisterComponent } from './pages/login/register.component';
     app_routing,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
