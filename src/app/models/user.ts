@@ -9,7 +9,7 @@ export class User {
         public type?: string,
         public password?: string,
         public address?: string,
-        public is_wholesale?: boolean,
-        public status?: boolean
+        public is_wholesale?: string,
+        public status?: string
     ) {}
 }

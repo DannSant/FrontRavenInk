@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AlertService } from '../../services/alert.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,10 @@ import { AlertService } from '../../services/alert.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public _alert:AlertService) { }
+  constructor(
+    public _alert:AlertService,
+    public _userService:UserService
+    ) { }
 
   password2:string;
   user:User={};
@@ -32,6 +36,23 @@ export class RegisterComponent implements OnInit {
     } else {
       this.errorMsg=""
     }
+
+    
+
+    this.user.type="1";
+    this.user.role="1";
+    this.user.username=this.user.email;
+    this.user.is_wholesale="0";
+    this.user.status="1";
+
+    this._userService.registerNormalUser(this.user).subscribe(
+      (resp:any)=>{
+        if(resp.ok){
+          console.log("todo bien");
+          this._alert.showAlert("Gracias por registrarte","Tu registro esta completo, ya puedes empezar a comprar","success");
+        }      
+        
+      });
 
     
 

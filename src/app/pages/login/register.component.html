@@ -14,7 +14,7 @@
             <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched">
                 <small>Este campo es requerido</small>
             </div>
-        </div>
+        </div>        
         <div class="form-group">
             <label>Password</label>
             <input type="password" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Ingresar Password" required>
@@ -22,12 +22,17 @@
         <div class="form-group">
             <label>Repetir Password</label>
             <input type="password" class="form-control" [(ngModel)]="password2" name="passwordRepeat" #passwordR="ngModel" placeholder="Ingresar Password de nuevo" required>
-            <div class="alert alert-danger" *ngIf="errorMsg='PASSWORD'">
+            <div class="alert alert-danger" *ngIf="errorMsg=='PASSWORD'">
                 <small>Las contraseñas son diferentes</small>
             </div>
         </div>
-
-
+        <div class="form-group">
+            <label>Direccion</label>
+            <textarea type="text" class="form-control" [(ngModel)]="user.address" name="address" #address="ngModel" placeholder="Ingresar dirección donde quieras recibir tus productos" required></textarea>
+            <div class="alert alert-danger" *ngIf="address.errors?.required && address.touched">
+                <small>Este campo es requerido</small>
+            </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>

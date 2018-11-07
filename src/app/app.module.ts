@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { app_routing } from './app.routes';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -11,6 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/login/register.component';
 
 import { UserService } from './services/user.service';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,12 @@ import { UserService } from './services/user.service';
     BrowserModule,
     RouterModule,
     app_routing,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
-    UserService
+    UserService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
