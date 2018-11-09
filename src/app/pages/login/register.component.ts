@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -12,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent implements OnInit {
 
   constructor(
+    public router:Router,
     public _alert:AlertService,
     public _userService:UserService
     ) { }
@@ -47,9 +50,9 @@ export class RegisterComponent implements OnInit {
 
     this._userService.registerNormalUser(this.user).subscribe(
       (resp:any)=>{
-        if(resp.ok){
-          console.log("todo bien");
+        if(resp.ok){          
           this._alert.showAlert("Gracias por registrarte","Tu registro esta completo, ya puedes empezar a comprar","success");
+          this.router.navigate(["/home"]);
         }      
         
       });

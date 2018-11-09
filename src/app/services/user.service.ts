@@ -14,7 +14,7 @@ export class UserService {
 
   token:string="";
   loggedUser:User;
-  username:string;
+  email:string;
   
 
   //Constantes
@@ -121,15 +121,33 @@ export class UserService {
   
   }
 
-  login(username:string,password:string,remember:boolean){
+  login(email:string,password:string,remember:boolean){
     let url = SERVICE_URL + "/login";
     if(remember){
-      localStorage.setItem("username",username);
-      this.username=username;
+      localStorage.setItem("username",email);
+      this.email=email;
     }
-    return this.http.post(url,{username,password}).pipe(map(data=>{
-      console.log(data);
-    }))
+    return this.http.post(url,{email,password}).pipe(map((resp:any)=>{
+      let user = resp.data[0 ];
+      let token = resp.token;
+      if (resp.ok){
+        this.guardarStorage(user.id,token,user);
+      }else {
+        this.token="";
+        this.loggedUser=null;
+      }
+      return resp;
+    }),catchError(e =>{
+      console.log(e);
+      let errorNumber:number = e.error.error.errno;
+      
+      if([1060,1061,1062].includes(errorNumber)){
+        this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario, el usuario "+user.email.toUpperCase()+" está ya registrado en la base de datos","error");
+      }else {
+        this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario "+user.username.toUpperCase(),"error");
+      }
+      return of(e)
+    }));
     // return this.http.post(url,{username,password}).map((resp:any)=>{
      
     //   if(resp.ok){
