@@ -1,3 +1,6 @@
+import { UserRole } from "./userRole";
+import { UserType } from './userType';
+
 export class User {
 
     constructor(

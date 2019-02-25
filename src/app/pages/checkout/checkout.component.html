@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-body">
+
+        <!-- Horizontal Steppers -->
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- Stepers Wrapper -->
+                <ul class="stepper stepper-horizontal">
+
+                    <!-- First Step -->
+                    <li class="completed">
+                        <a>
+                            <span class="circle">1</span>
+                            <span class="label">Ver tu producto</span>
+                        </a>
+                    </li>
+
+                    <!-- Second Step -->
+                    <li class="completed">
+                        <a>
+                            <span class="circle">2</span>
+                            <span class="label">Carrito</span>
+                        </a>
+                    </li>
+
+                    <!-- Third Step -->
+                    <li class="active">
+                        <a href="#!">
+                            <span class="circle">3</span>
+                            <span class="label">Forma de pago</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- /.Stepers Wrapper -->
+
+            </div>
+        </div>
+        <!-- /.Horizontal Steppers -->
+
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="black white-text">Nombre</th>
+                <td>{{item.item_name}}</td>
+
+            </tr>
+            <tr>
+                <th class="black white-text">Descripcion</th>
+                <td>{{item.description}}</td>
+            </tr>
+            <tr>
+                <th class="black white-text">Existencia</th>
+                <td>{{item.existance}}</td>
+            </tr>
+            <tr>
+                <th class="black white-text">Entregar a</th>
+                <td>{{_userService.loggedUser?.name}}</td>
+            </tr>
+            <tr>
+                <th class="black white-text">En</th>
+                <td>{{_userService.loggedUser?.address}}</td>
+            </tr>
+            <tr>
+                <th class="black white-text">Cantidad</th>
+                <td>{{existance}}</td>
+            </tr>
+            <tr>
+                <th class="black white-text">A pagar</th>
+                <td>${{existance*currentPrice}}</td>
+            </tr>
+            <tr>
+                <th class="black white-text"></th>
+                <td>
+                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<!-- Horizontal material form -->

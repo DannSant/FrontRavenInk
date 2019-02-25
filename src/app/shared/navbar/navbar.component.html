@@ -40,7 +40,7 @@
                     <a class="dropdown-item" href="#">Pines</a>
                     <a class="dropdown-item" href="#">Botones</a>
                     <a class="dropdown-item" href="#">Cristal</a>
-                    <a class="dropdown-item" href="#">Bisuteria</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','6']">Bisuteria</a>
                     <a class="dropdown-item" href="#">Carteras</a>
                     <a class="dropdown-item" href="#">Llaveros</a>
                     <a class="dropdown-item" href="#">Monederos</a>
@@ -65,8 +65,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Sketchbooks</a>
-                    <a class="dropdown-item" href="#">Separadores</a>
-                    <a class="dropdown-item" href="#">Stickers</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','15']">Separadores</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','16']">Stickers</a>
                     <a class="dropdown-item" href="#">Prints</a>
                     <a class="dropdown-item" href="#">Postales</a>
                     <a class="dropdown-item" href="#">Serigrafías</a>
@@ -94,9 +94,12 @@
                 </div>
             </li>
 
-            <li class="nav-item" style="position: relative;bottom: 8px;">
+            <li *ngIf="!_userService.loggedUser" class="nav-item" style="position: relative;bottom: 8px;">
                 <a routerLink="/login" class="nav-link m-2 menu-item nav-active">Inicia Sesion</a>
             </li>
+
+            <h3 *ngIf="_userService.loggedUser"><span class="badge badge-secondary">Bienvenido {{_userService.loggedUser.name}}</span></h3>
+            <button *ngIf="_userService.loggedUser" (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="button">Salir </button>
 
         </ul>
     </div>

@@ -13,6 +13,13 @@ import { RegisterComponent } from './pages/login/register.component';
 
 import { UserService } from './services/user.service';
 import { AlertService } from './services/alert.service';
+import { InventoryService } from './services/inventory.service';
+import { CatalogComponent } from './pages/catalog/catalog.component';
+import { ItemViewComponent } from './pages/item-view/item-view.component';
+import { CartReviewComponent } from './pages/cart-review/cart-review.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { TransactionService } from './services/transaction.service';
 
 @NgModule({
   declarations: [
@@ -20,18 +27,25 @@ import { AlertService } from './services/alert.service';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CatalogComponent,
+    ItemViewComponent,
+    CartReviewComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     app_routing,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPayPalModule
   ],
   providers: [
     UserService,
-    AlertService
+    AlertService,
+    InventoryService,
+    TransactionService
   ],
   bootstrap: [AppComponent]
 })

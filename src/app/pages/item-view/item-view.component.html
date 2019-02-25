@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-body">
+
+        <!-- Horizontal Steppers -->
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- Stepers Wrapper -->
+                <ul class="stepper stepper-horizontal">
+
+                    <!-- First Step -->
+                    <li class="completed">
+                        <a>
+                            <span class="circle">1</span>
+                            <span class="label">Ver tu producto</span>
+                        </a>
+                    </li>
+
+                    <!-- Second Step -->
+                    <li class="">
+                        <a [routerLink]="['/cart',item.id]">
+                            <span class="circle">2</span>
+                            <span class="label">Carrito</span>
+                        </a>
+                    </li>
+
+                    <!-- Third Step -->
+                    <li class="">
+                        <a href="#!">
+                            <span class="circle">3</span>
+                            <span class="label">Forma de pago</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- /.Stepers Wrapper -->
+
+            </div>
+        </div>
+        <!-- /.Horizontal Steppers -->
+
+    </div>
+</div>
+<div class="card-group">
+    <div class="card">
+        <div class="view overlay zoom">
+            <img style="width: 450px" src="../../../../src/assets/img/items/{{item.code}}.jpg" class="img-fluid " alt="smaple image">
+            <div class="mask flex-center">
+                <p class="white-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="card-img-top" style="width: 200px" src="../../../../src/assets/img/items/{{item.code}}.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{item.item_name}}</h5>
+            <p class="card-text">{{item.description}}</p>
+            <button class="btn btn-success" type="button" [routerLink]="['/cart',item.id]">Agregar al carrito</button>
+        </div>
+    </div>
+</div>

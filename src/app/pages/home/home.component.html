@@ -1,30 +1,16 @@
 <div class="container">
     <h2>Lo mas vendido</h2>
     <div class="card-group">
-        <div class="card">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card" *ngFor="let item of items">
+            <img class="card-img-top" src="../../../../src/assets/img/items/{{item.code}}.jpg" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Emmy</h5>
-                <p class="card-text">Comic bien bonito :)</p>
-
+                <h5 class="card-title">{{item.item_name}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                <button class="btn btn-primary" [routerLink]="['/item',item.id]">Ver</button>
+                <button class="btn btn-success">Comprar</button>
             </div>
         </div>
-        <div class="card">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Stickers de Cthulu</h5>
-                <p class="card-text">Plantilla de stickers de 10x10</p>
 
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Cuervo de peluche</h5>
-                <p class="card-text">Rifado el cuervito</p>
-
-            </div>
-        </div>
     </div>
 </div>
 

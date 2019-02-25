@@ -142,9 +142,9 @@ export class UserService {
       let errorNumber:number = e.error.error.errno;
       
       if([1060,1061,1062].includes(errorNumber)){
-        this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario, el usuario "+user.email.toUpperCase()+" está ya registrado en la base de datos","error");
+        this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario, el usuario "+email.toUpperCase()+" está ya registrado en la base de datos","error");
       }else {
-        this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario "+user.username.toUpperCase(),"error");
+        this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario "+email.toUpperCase(),"error");
       }
       return of(e)
     }));
