@@ -1,0 +1,49 @@
+<div class="big-container">
+    <!-- <input class="form-control form-control-lg" type="text" placeholder="Buscar" [(ngModel)]="term" (keyup)="search()"> -->
+    <div class="row" *ngIf="subcategories.length<=0">
+        <div class="col-md-12">
+            <div class="alert alert-warning" role="alert">
+                No hay subcateogorias dados de alta
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class=card-body>
+            <h3 class="card-title">Subcategorias </h3>
+            <div class="text-right">
+                <button [routerLink]="['/subcategoryDetail','new']" type="button" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+                Nueva subcategoria
+              </button>
+            </div>
+            <div class="row" *ngIf="subcategories.length>0">
+                <div class="col-md-8">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Estatus</th>
+                                <th scope="col"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let subcategory of subcategories">
+
+                                <td>{{subcategory.name}}</td>
+                                <td>{{subcategory.status}}</td>
+                                <td>
+
+                                    <button class="btn btn-primary" [routerLink]="['/subcategoryDetail',subcategory.id]"> <i class="far fa-edit"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+    </div>
+  </div>
+</div>

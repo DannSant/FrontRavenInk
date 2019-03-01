@@ -6,6 +6,19 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { ItemViewComponent } from './pages/item-view/item-view.component';
 import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { InventoryComponent } from './pages/admin/inventory/inventory.component';
+
+
+import { AdminGuardGuard } from './services/admin-guard.guard';
+import { InventoryDetailComponent } from './pages/admin/inventory/inventory-detail.component';
+import { VerifyTokenGuard } from './services/guards/verify-token.guard';
+import { CategoriesComponent } from './pages/admin/categories/categories.component';
+import { CategoryDetailComponent } from './pages/admin/categories/category-detail.component';
+import { SubcategoriesComponent } from './pages/admin/subcategories/subcategories.component';
+import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
+
+
+
 
 
 const app_routes: Routes = [
@@ -17,6 +30,37 @@ const app_routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'login/:redirect/:id', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {
+    path: 'inventory',
+    component: InventoryComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'inventoryDetail/:id',
+    component: InventoryDetailComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'category',
+    component: CategoriesComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'categoryDetail/:id',
+    component: CategoryDetailComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'subcategory',
+    component: SubcategoriesComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'subcategoryDetail/:id',
+    component: SubcategoryDetailComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

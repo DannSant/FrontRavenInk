@@ -40,24 +40,24 @@ export class RegisterComponent implements OnInit {
       this.errorMsg=""
     }
 
-    
+
 
     this.user.type="1";
-    this.user.role="1";
+    this.user.role="2";
     this.user.username=this.user.email;
     this.user.is_wholesale="0";
     this.user.status="1";
 
     this._userService.registerNormalUser(this.user).subscribe(
       (resp:any)=>{
-        if(resp.ok){          
+        if(resp.ok){
           this._alert.showAlert("Gracias por registrarte","Tu registro esta completo, ya puedes empezar a comprar","success");
           this.router.navigate(["/home"]);
-        }      
-        
+        }
+
       });
 
-    
+
 
   }
 

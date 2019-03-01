@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
-import {SERVICE_URL} from '../config/config';
+import {SERVICE_URL,ADMIN_ROLE_CODE} from '../config/config';
 import { Observable, of } from 'rxjs';
 import { map,catchError } from 'rxjs/operators';
 import { AlertService } from './alert.service';
@@ -15,7 +15,7 @@ export class UserService {
   token:string="";
   loggedUser:User;
   email:string;
-  
+
 
   //Constantes
   USER_ROLES = ["USER_ROLE","ADMIN_ROLE"];
@@ -25,100 +25,98 @@ export class UserService {
     public _alert:AlertService,
     public router:Router
   ) {
-    //this.cargarStorage();
-    //this.validateSession();
+    this.cargarStorage();
+    this.validateSession();
 
-    
+
    }
 
-  //  validateSession(){     
-  //   let url = SERVICE_URL + "/validateToken";
-  //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.post(url,{},{headers}).map((resp:any)=>{
-     
-  //     if(resp.ok){
-  //       this.guardarStorage(resp.data._id,resp.token,resp.data,this.associate);
-       
-  //     }else {
-  //       this.token="";
-  //       this.loggedUser=null;
-  //       this._alert.showAlert("Sesion Expirada","Vuelva a iniciar sesion","error");
-  //       this.logout(); 
-  //     }
-  //     return resp;
-  //   }).catch((e)=>{     
-  //     if (!e.error.error){
-  //       console.log(e); 
-  //       return
-  //     }  
-  //     let errorMessage = e.error.error.message;
-  //     console.error(errorMessage);
-  //     this._alert.showAlert("Sesion Expirada","Vuelva a iniciar sesion","error");
-  //     this.logout();
-  //     return Observable.throw(e);
-  //   });
-  //  }
+   validateSession(){
+    let url = SERVICE_URL + "/validateToken";
+    let headers = new HttpHeaders({token:this.token})
+    return this.http.post(url,{},{headers}).pipe(map((resp:any)=>{
 
-  //  renuevaToken(){
-  //   let url = SERVICE_URL + "/renewToken";
-  //   let headers = new HttpHeaders({
-  //    'token':this.token
-  //   });
+      if(resp.ok){
+        this.guardarStorage(resp.data._id,resp.token,resp.data);
 
-  //   return this.http.get(url,{headers}).map((resp:any)=>{      
-  //     this.guardarStorage(this.loggedUser.id,resp.token,this.loggedUser,this.associate);
-  //     return true;
-  //   }).catch((e)=>{
-  //    let errorMessage= e.error.error.message;       
-  //    this._alert.showAlert('Error al renovar token ',errorMessage,"error")
-  //    this.logout();
-  //   return Observable.throw (e);
-    
-  //  });
-  // }
+      }else {
+        this.token="";
+        this.loggedUser=null;
+        this._alert.showAlert("Sesion Expirada","Vuelva a iniciar sesion","error");
+        this.logout();
+      }
+      return resp;
+    }),catchError((e)=>{
+      if (!e.error.error){
+        console.log(e);
+        return
+      }
+      let errorMessage = e.error.error.message;
+      console.error(errorMessage);
+      this._alert.showAlert("Sesion Expirada","Vuelva a iniciar sesion","error");
+      this.logout();
+      return Observable.throw(e);
+    }));
+   }
 
-  //  isAuthenticated():boolean{
-  //    if (this.loggedUser){
-  //      return true;
-  //    }else {
-  //      return false;
-  //    }
-  //  }
+   renuevaToken(){
+    let url = SERVICE_URL + "/renewToken";
+    let headers = new HttpHeaders({
+     'token':this.token
+    });
 
-  //  isAdmin():boolean{
-  //    if(!this.loggedUser){
-  //      return false;
-  //    }else {
-  //     return this.loggedUser.role=="ADMIN_ROLE";
-  //    }
-     
-  //  }
+    return this.http.get(url,{headers}).pipe(map((resp:any)=>{
+      let userid = this.loggedUser.id.toString();
+      this.guardarStorage(userid,resp.token,this.loggedUser);
+      return true;
+    }),catchError((e)=>{
+     let errorMessage= e.error.error.message;
+     this._alert.showAlert('Error al renovar token ',errorMessage,"error")
+     this.logout();
+    return Observable.throw (e);
 
-  //  cargarStorage(){
-  //   if(localStorage.getItem('token')){
-  //     this.token = localStorage.getItem("token");      
-  //     this.loggedUser = JSON.parse(localStorage.getItem("user"));
-    
-  //   }else {
-  //     this.token = "";
-  //     this.loggedUser=null;
-     
-  //   }
+   }));
+  }
 
-  //   if(localStorage.getItem("username")){
-  //     this.username = localStorage.getItem("username");
-  //   }
-    
-  // }
+   isAuthenticated():boolean{
+     if (this.loggedUser){
+       return true;
+     }else {
+       return false;
+     }
+   }
+
+   isAdmin():boolean{
+
+     if(!this.loggedUser){
+       return false;
+     }else {
+      return this.loggedUser.role==ADMIN_ROLE_CODE;
+     }
+
+   }
+
+   cargarStorage(){
+    if(localStorage.getItem('token')){
+      this.token = localStorage.getItem("token");
+      this.loggedUser = JSON.parse(localStorage.getItem("user"));
+
+    }else {
+      this.token = "";
+      this.loggedUser=null;
+
+    }
+
+  }
 
   guardarStorage(id:string,token:string,user:User){
    localStorage.setItem("id",id);
    localStorage.setItem("token",token);
    localStorage.setItem("user",JSON.stringify(user));
-   
+
    this.loggedUser=user;
    this.token=token;
-  
+
   }
 
   login(email:string,password:string,remember:boolean){
@@ -128,8 +126,9 @@ export class UserService {
       this.email=email;
     }
     return this.http.post(url,{email,password}).pipe(map((resp:any)=>{
-      let user = resp.data[0 ];
+      let user = resp.data[0];
       let token = resp.token;
+
       if (resp.ok){
         this.guardarStorage(user.id,token,user);
       }else {
@@ -140,7 +139,7 @@ export class UserService {
     }),catchError(e =>{
       console.log(e);
       let errorNumber:number = e.error.error.errno;
-      
+
       if([1060,1061,1062].includes(errorNumber)){
         this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario, el usuario "+email.toUpperCase()+" está ya registrado en la base de datos","error");
       }else {
@@ -149,7 +148,7 @@ export class UserService {
       return of(e)
     }));
     // return this.http.post(url,{username,password}).map((resp:any)=>{
-     
+
     //   if(resp.ok){
     //     this.guardarStorage(resp.data.user._id,resp.token,resp.data.user);
     //   }else {
@@ -157,11 +156,11 @@ export class UserService {
     //     this.loggedUser=null;
     //   }
     //   return resp;
-    // }).catch((e)=>{   
+    // }).catch((e)=>{
     //   if (!e.error.error){
-    //     console.log(e); 
+    //     console.log(e);
     //     return
-    //   }    
+    //   }
     //   let errorMessage = e.error.error.message;
     //   this._alert.showAlert("Error al iniciar sesion",errorMessage,"error");
     //   return Observable.throw(e);
@@ -170,7 +169,7 @@ export class UserService {
 
   logout(){
     this.token="";
-    this.loggedUser=null;   
+    this.loggedUser=null;
     localStorage.removeItem("id");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -184,7 +183,7 @@ export class UserService {
     return this.http.post(url,user).pipe(catchError(e =>{
       console.log(e);
       let errorNumber:number = e.error.error.errno;
-      
+
       if([1060,1061,1062].includes(errorNumber)){
         this._alert.showAlert("Error","Ha ocurrido un error al dar de alta al usuario, el usuario "+user.email.toUpperCase()+" está ya registrado en la base de datos","error");
       }else {
@@ -192,12 +191,12 @@ export class UserService {
       }
       return of(e)
     }));
-    // .catch((e)=>{  
+    // .catch((e)=>{
     //   this._alert.closeWaitWindow();
     //   if (!e.error.error){
-    //     console.log(e); 
+    //     console.log(e);
     //     return
-    //   }     
+    //   }
     //   let errorMessage = e.error.error.message;
     //   console.error(errorMessage);
     //   if(e.status==409){
@@ -205,7 +204,7 @@ export class UserService {
     //   }else {
     //     this._alert.showAlert("Error al crear usuario","Ha ocurrido al crear usuario, intente nuevamente despues de recargar la pagina","error");
     //   }
-    
+
     //   return Observable.throw(e);
     // });
   }
@@ -213,7 +212,7 @@ export class UserService {
   // loadAllUsers(){
   //   let url = SERVICE_URL + "/user/all";
   //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.get(url,{headers}).catch((e)=>{      
+  //   return this.http.get(url,{headers}).catch((e)=>{
   //     let errorMessage = e.error.error.message;
   //     this._alert.showAlert("Error","Ha ocurrido un error al recuperar los usuarios de la base de datos. Intenta recargar la pagina","error");
   //     return Observable.throw(e);
@@ -223,7 +222,7 @@ export class UserService {
   // searchUsers(term:string){
   //   let url = SERVICE_URL + "/user/search/" + term;
   //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.get(url,{headers}).catch((e)=>{      
+  //   return this.http.get(url,{headers}).catch((e)=>{
   //     let errorMessage = e.error.error.message;
   //     //this._alert.showAlert("Error","Ha ocurrido un error al recuperar los usuarios de la base de datos. Intenta recargar la pagina","error");
   //     return Observable.throw(e);
@@ -233,7 +232,7 @@ export class UserService {
   // getUser(id:string){
   //   let url = SERVICE_URL + "/user?id=" + id;
   //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.get(url,{headers}).catch((e)=>{      
+  //   return this.http.get(url,{headers}).catch((e)=>{
   //     let errorMessage = e.error.error.message;
   //     this._alert.showAlert("Error","Ha ocurrido un error al recuperar al usuario de la base de datos. Intenta recargar la pagina","error");
   //     return Observable.throw(e);
@@ -243,7 +242,7 @@ export class UserService {
   // modifyUser(user:User){
   //   let url = SERVICE_URL + "/user/" + user.id;
   //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.put(url,user,{headers}).catch((e)=>{      
+  //   return this.http.put(url,user,{headers}).catch((e)=>{
   //     let errorMessage = e.error.error.message;
   //     this._alert.showAlert("Error","Ha ocurrido un error al guardar en la base de datos. Intenta recargar la pagina","error");
   //     return Observable.throw(e);
@@ -253,7 +252,7 @@ export class UserService {
   // deleteUser(user:User){
   //   let url = SERVICE_URL + "/user/delete/" + user.id;
   //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.post(url,user,{headers}).catch((e)=>{      
+  //   return this.http.post(url,user,{headers}).catch((e)=>{
   //     let errorMessage = e.error.error.message;
   //     this._alert.showAlert("Error","Ha ocurrido un error al borrar el usuario en la base de datos. Intenta recargar la pagina","error");
   //     return Observable.throw(e);
@@ -270,7 +269,7 @@ export class UserService {
   //     userUserName:user.username,
   //     userPassword:(password?password:user.password)
   //   }
-  //   return this.http.post(url,body,{headers}).catch((e)=>{      
+  //   return this.http.post(url,body,{headers}).catch((e)=>{
   //     let errorMessage = e.error.error.message;
   //     this._alert.showAlert("Error","Ha ocurrido un error al enviar el email de notificacion","error");
   //     return Observable.throw(e);

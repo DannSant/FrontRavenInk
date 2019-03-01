@@ -16,6 +16,17 @@
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
         <ul class="navbar-nav ml-auto flex-nowrap">
 
+            <li *ngIf="_userService.isAdmin()" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Administración
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/inventory">Inventario</a>
+                    <a class="dropdown-item" routerLink="/category">Categorias</a>
+                    <a class="dropdown-item" routerLink="/subcategory">Subcategorias</a>
+                </div>
+            </li>
+
             <li class="nav-item" style="position: relative;bottom: 8px;">
                 <a routerLink="home" class="nav-link m-2 menu-item nav-active">Inicio</a>
             </li>
@@ -27,8 +38,8 @@
                   Ropa
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Hombre</a>
-                    <a class="dropdown-item" href="#">Mujer</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','1']">Hombre</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','2']">Mujer</a>
                 </div>
             </li>
 
@@ -37,14 +48,14 @@
                   Accesorios
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Pines</a>
-                    <a class="dropdown-item" href="#">Botones</a>
-                    <a class="dropdown-item" href="#">Cristal</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','3']">Pines</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','4']">Botones</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','5']">Cristal</a>
                     <a class="dropdown-item" [routerLink]="['/catalog','6']">Bisuteria</a>
-                    <a class="dropdown-item" href="#">Carteras</a>
-                    <a class="dropdown-item" href="#">Llaveros</a>
-                    <a class="dropdown-item" href="#">Monederos</a>
-                    <a class="dropdown-item" href="#">Parches</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','7']">Carteras</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','8']">Llaveros</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','9']">Monederos</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','10']">Parches</a>
                 </div>
             </li>
 
@@ -53,9 +64,9 @@
                   Peluches y Figuras
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Peluches</a>
-                    <a class="dropdown-item" href="#">Almohadas</a>
-                    <a class="dropdown-item" href="#">Esculturas</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','11']">Peluches</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','12']">Almohadas</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','13']">Esculturas</a>
                 </div>
             </li>
 
@@ -64,12 +75,12 @@
                  Arte en papel
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Sketchbooks</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','14']">Sketchbooks</a>
                     <a class="dropdown-item" [routerLink]="['/catalog','15']">Separadores</a>
                     <a class="dropdown-item" [routerLink]="['/catalog','16']">Stickers</a>
-                    <a class="dropdown-item" href="#">Prints</a>
-                    <a class="dropdown-item" href="#">Postales</a>
-                    <a class="dropdown-item" href="#">Serigrafías</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','17']">Prints</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','18']">Postales</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','19']">Serigrafías</a>
                 </div>
             </li>
 
@@ -78,15 +89,15 @@
                   Comic's
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Emmy</a>
-                    <a class="dropdown-item" href="#">Underneath</a>
-                    <a class="dropdown-item" href="#">Invitados</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','20']">Emmy</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','21']">Underneath</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','22']">Invitados</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Acerca de 
+                  Acerca de
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Contacto</a>
@@ -98,7 +109,7 @@
                 <a routerLink="/login" class="nav-link m-2 menu-item nav-active">Inicia Sesion</a>
             </li>
 
-            <h3 *ngIf="_userService.loggedUser"><span class="badge badge-secondary">Bienvenido {{_userService.loggedUser.name}}</span></h3>
+            <h4 *ngIf="_userService.loggedUser"><span class="badge badge-secondary">Bienvenido {{_userService.loggedUser.name}}</span></h4>
             <button *ngIf="_userService.loggedUser" (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="button">Salir </button>
 
         </ul>

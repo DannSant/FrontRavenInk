@@ -9,6 +9,8 @@ export class InventoryItem {
         public public_price?:number,
         public wholesale_price?:number,
         public existance?:number,
-        public status?:string
+        public status?:string,
+        public img?:string,
+        public subcategory?:string
     ) {}
 }
