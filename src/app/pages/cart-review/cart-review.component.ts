@@ -28,23 +28,23 @@ export class CartReviewComponent implements OnInit {
         this.router.navigate(["/login",'cart',id])
       }else {
         this._inventoryService.getItem(id).subscribe(resp=>{
-        
+
           if(resp.ok){
             this.item=resp.data[0];
           }
         });
       }
     });
-    
+
   }
 
   validateExistance(event){
-    console.log(this.existance);
+
     if(this.existance>this.item.existance){
       this.existance=this.item.existance;
       this._alert.showAlert("Error","No puedes seleccionar mas de " + this.item.existance + " producto(s)","error")
       //event.preventDefault()
-     
+
     }
   }
 
@@ -53,7 +53,7 @@ export class CartReviewComponent implements OnInit {
       this.existance=this.item.existance;
       this._alert.showAlert("Error","No puedes seleccionar mas de " + this.item.existance + " producto(s)","error")
       //event.preventDefault()
-     
+
     }
     this.router.navigate(['/checkout',this.existance,this.item.id])
   }

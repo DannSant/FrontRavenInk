@@ -21,8 +21,19 @@ export class TransactionService {
     return this.http.post(url,transaction).pipe(catchError(e =>{
       console.log(e);
       //let errorNumber:number = e.error.error.errno;
-      this._alert.showAlert("Error","Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ","error");        
+      this._alert.showAlert("Error","Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ","error");
       return of(e)
     }));
   }
+
+  sendTransactionForm(object:any){
+    let url = SERVICE_URL + '/checkout';
+    return this.http.post(url,object).pipe(catchError(e =>{
+      console.log(e);
+      this._alert.showAlert("Error","Error al abrir formulario de pago ","error");
+      return of(e)
+    }));
+  }
+
+
 }

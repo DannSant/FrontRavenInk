@@ -33,6 +33,8 @@ import { CategoriesComponent } from './pages/admin/categories/categories.compone
 import { SubcategoriesComponent } from './pages/admin/subcategories/subcategories.component';
 import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
 import { CategoryDetailComponent } from './pages/admin/categories/category-detail.component';
+import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
+
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { CategoryDetailComponent } from './pages/admin/categories/category-detai
     CategoriesComponent,
     CategoryDetailComponent,
     SubcategoriesComponent,
-    SubcategoryDetailComponent
+    SubcategoryDetailComponent,
+    CheckoutConfirmComponent
+
   ],
   imports: [
     BrowserModule,

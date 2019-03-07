@@ -4,15 +4,19 @@ import { UserService } from '../../services/user.service';
 import { InventoryService } from '../../services/inventory.service';
 import { AlertService } from '../../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PayPalConfig, PayPalIntegrationType, PayPalEnvironment } from 'ngx-paypal';
+//import { PayPalConfig, PayPalIntegrationType, PayPalEnvironment } from 'ngx-paypal';
 import { Transaction } from 'src/app/models/transaction';
 import { TransactionService } from 'src/app/services/transaction.service';
 
+import {PAYU_ACCOUNT_ID,PAYU_API_KEY,PAYU_CURRENCY,PAYU_MERCHANT_ID} from '../../config/config';
+import { NgForm } from '@angular/forms';
+
+declare var OpenPay:any;
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styles: []
+  styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
 
@@ -21,8 +25,18 @@ export class CheckoutComponent implements OnInit {
   currentPrice:number=0.0;
   transaction:Transaction={}
 
-  public payPalConfig?: PayPalConfig;
-  
+
+
+  deviceSessionId:string="";
+  tokenId:string="";
+  holder_name:string="";
+  card_number:string="";
+  expiration_month:string="";
+  expiration_year:string="";
+  cvv2:string="";
+
+  //public payPalConfig?: PayPalConfig;
+
   constructor(
     public _userService:UserService,
     public _inventoryService:InventoryService,
@@ -30,18 +44,28 @@ export class CheckoutComponent implements OnInit {
     public _transactionService:TransactionService,
     public router:Router,
     public activatedRoute:ActivatedRoute
-  ) { }
+  ) {
+    OpenPay.setId('mrn1c9jd00lxgdeeqtod');
+    OpenPay.setApiKey('pk_c46d11a83c724a3a91a52fde8934196c');
+    OpenPay.setSandboxMode(true);
+    //Se genera el id de dispositivo
+    this.deviceSessionId= OpenPay.deviceData.setup();
+
+
+
+
+  }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params)=>{
-     
+
       let id=params.id;
       this.existance=params.qty;
       if(!this._userService.loggedUser){
         this.router.navigate(["/login",'cart',id])
       }else {
         this._inventoryService.getItem(id).subscribe(resp=>{
-        
+
           if(resp.ok){
             this.item=resp.data[0];
             this.initTransaction();
@@ -49,7 +73,20 @@ export class CheckoutComponent implements OnInit {
         });
       }
     });
-    
+
+  }
+
+  tokenize(f:NgForm){
+    OpenPay.token.extractFormAndCreate('payment-form', (response:any)=>{
+      this.tokenId= response.data.id;
+      this.sendPayment();
+    },
+    (response:any)=>{
+      var desc = response.data.description != undefined ? response.data.description : response.message;
+      this._alert.showAlert("Error","ERROR [" + response.status + "] " + desc,"error");
+
+    }
+    );
   }
 
   initTransaction(){
@@ -60,17 +97,37 @@ export class CheckoutComponent implements OnInit {
       this.currentPrice=this.item.wholesale_price;
     }
 
+    this.transaction.operation_date = new Date();
     this.transaction.item = this.item.id;
     this.transaction.qty = this.existance;
     this.transaction.current_price=this.currentPrice;
     this.transaction.user = this._userService.loggedUser.id;
     this.transaction.type=1;
     this.transaction.total_payed = this.currentPrice*this.existance;
-    console.log(this.transaction)
-    this.initConfig();
+    this.transaction.status="1";
+    //this.transaction.reference_id = new Date().getUTCDate().toString();
+    //this.transaction.signatureData = `${PAYU_API_KEY}~${PAYU_MERCHANT_ID}~${this.transaction.reference_id}~${this.transaction.total_payed}~${PAYU_CURRENCY}`;
+    //console.log(this.transaction)
+    //this.initConfig();
+
 
   }
 
+  sendPayment(){
+
+    let payment = {
+      transaction:this.transaction,
+      deviceSessionId:this.deviceSessionId,
+      tokenId:this.tokenId,
+      customer:this._userService.loggedUser
+    }
+
+    //console.log(f.value);
+    this._transactionService.sendTransactionForm(payment).subscribe((resp:any)=>{
+      console.log(resp);
+    });
+  }
+/*
   private initConfig(): void {
     this.payPalConfig = new PayPalConfig(PayPalIntegrationType.ClientSideREST, PayPalEnvironment.Sandbox, {
       commit: true,
@@ -100,7 +157,7 @@ export class CheckoutComponent implements OnInit {
         }
       }]
     });
-  }
+  } */
 
   finishTransaction(){
     this._transactionService.registerTransaction(this.transaction).subscribe((resp:any)=>{

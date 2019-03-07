@@ -16,6 +16,7 @@ import { CategoriesComponent } from './pages/admin/categories/categories.compone
 import { CategoryDetailComponent } from './pages/admin/categories/category-detail.component';
 import { SubcategoriesComponent } from './pages/admin/subcategories/subcategories.component';
 import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
+import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
 
 
 
@@ -60,6 +61,12 @@ const app_routes: Routes = [
     component: SubcategoryDetailComponent,
     canActivate: [AdminGuardGuard,VerifyTokenGuard]
   },
+  {
+    path: 'checkoutConfirm',
+    component: CheckoutConfirmComponent,
+    canActivate: [VerifyTokenGuard]
+  },
+
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

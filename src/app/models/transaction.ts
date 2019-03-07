@@ -10,10 +10,13 @@ export class Transaction  {
         public type?:number,
         public user?:number,
         public status?:string,
-        public total_payed?:number
+        public total_payed?:number,
+        public reference_id?:string,
+        public signatureData?:string,
+        public signature?:string
     ) {
-      
-  
+
+
     }
 
 
