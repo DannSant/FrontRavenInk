@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit {
     OpenPay.setSandboxMode(true);
     //Se genera el id de dispositivo
     this.deviceSessionId= OpenPay.deviceData.setup();
-
+    console.log(this.deviceSessionId);
 
 
 
@@ -76,18 +76,6 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  tokenize(f:NgForm){
-    OpenPay.token.extractFormAndCreate('payment-form', (response:any)=>{
-      this.tokenId= response.data.id;
-      this.sendPayment();
-    },
-    (response:any)=>{
-      var desc = response.data.description != undefined ? response.data.description : response.message;
-      this._alert.showAlert("Error","ERROR [" + response.status + "] " + desc,"error");
-
-    }
-    );
-  }
 
   initTransaction(){
 
@@ -105,13 +93,30 @@ export class CheckoutComponent implements OnInit {
     this.transaction.type=1;
     this.transaction.total_payed = this.currentPrice*this.existance;
     this.transaction.status="1";
-    //this.transaction.reference_id = new Date().getUTCDate().toString();
+    this.transaction.reference_id = new Date().getTime().toString();
+
     //this.transaction.signatureData = `${PAYU_API_KEY}~${PAYU_MERCHANT_ID}~${this.transaction.reference_id}~${this.transaction.total_payed}~${PAYU_CURRENCY}`;
     //console.log(this.transaction)
     //this.initConfig();
 
 
   }
+
+  tokenize(f:NgForm){
+    this._alert.showWaitWindow("Procesando","Espere un momento, estamos procesando su transaccion");
+    OpenPay.token.extractFormAndCreate('payment-form', (response:any)=>{
+      this.tokenId= response.data.id;
+      this.sendPayment();
+    },
+    (response:any)=>{
+      this._alert.closeWaitWindow();
+      var desc = response.data.description != undefined ? response.data.description : response.message;
+      this._alert.showAlert("Error","ERROR [" + response.status + "] " + desc,"error");
+
+    }
+    );
+  }
+
 
   sendPayment(){
 
@@ -124,7 +129,15 @@ export class CheckoutComponent implements OnInit {
 
     //console.log(f.value);
     this._transactionService.sendTransactionForm(payment).subscribe((resp:any)=>{
-      console.log(resp);
+      this._alert.closeWaitWindow();
+      if(resp.ok){
+        this._alert.showAlert("Exito", "Tu compra está en camino, gracias por tu preferencia","success");
+        this.router.navigate(["/home"]);
+      }else {
+        this._alert.showAlert("Error", "Ha ocurrido un error al procesar tu transaccion","error");
+        console.log(resp);
+      }
+
     });
   }
 /*
