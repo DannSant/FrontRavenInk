@@ -45,7 +45,11 @@ export class InventoryService {
       return this.http.get(url).pipe(catchError(e =>{
         console.log(e);
         //let errorNumber:number = e.error.error.errno;
-        this._alert.showAlert("Error","Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ","error");
+        if (e.error.code){
+          this._alert.showAlert("Error","No se han encontrado productos de esa categoria","error");
+        }else {
+          this._alert.showAlert("Error","Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ","error");
+        }
         return of(e)
       }));
     }
@@ -54,8 +58,14 @@ export class InventoryService {
       let url = SERVICE_URL + "/inventory/" + id;
       return this.http.get(url).pipe(catchError(e =>{
         console.log(e);
+
         //let errorNumber:number = e.error.error.errno;
-        this._alert.showAlert("Error","Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ","error");
+        if (e.error.code){
+          this._alert.showAlert("Error","No se han encontrado productos de esa categoria","error");
+        }else {
+          this._alert.showAlert("Error","Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ","error");
+        }
+
         return of(e)
       }));
     }
