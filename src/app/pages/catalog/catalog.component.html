@@ -3,15 +3,12 @@
     <div class="row">
         <div class="col-sm-4" *ngFor="let item of items">
             <div class="card">
-                <img class="card-img-top"
-                     src="../../../../assets/img/items/{{item.code}}.jpg"
-                     alt="Card image cap"
-                     onError="this.src='../../../../assets/img/no-image.jpg'"/>
+                <img class="card-img-top" src="../../../../assets/img/items/{{item.code}}.jpg" alt="Card image cap" onError="this.src='../../../../assets/img/no-image.jpg'" />
 
                 <div class="card-body">
                     <h5 class="card-title">{{item.item_name}}</h5>
                     <p class="card-text">{{item.description}}</p>
-                    <button class="btn btn-primary">Ver</button>
+                    <button class="btn btn-primary" [routerLink]="['/item',item.id]">Ver</button>
                     <button class="btn btn-success">Comprar</button>
                 </div>
             </div>
