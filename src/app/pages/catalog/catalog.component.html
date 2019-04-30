@@ -9,7 +9,7 @@
                     <h5 class="card-title">{{item.item_name}}</h5>
                     <p class="card-text">{{item.description}}</p>
                     <button class="btn btn-primary" [routerLink]="['/item',item.id]">Ver</button>
-                    <button class="btn btn-success">Comprar</button>
+                    <button class="btn btn-success" [routerLink]="['/cart',item.id]">Comprar</button>
                 </div>
             </div>
 
