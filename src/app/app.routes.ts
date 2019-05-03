@@ -17,6 +17,8 @@ import { CategoryDetailComponent } from './pages/admin/categories/category-detai
 import { SubcategoriesComponent } from './pages/admin/subcategories/subcategories.component';
 import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
 import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
+import { UsersComponent } from './pages/admin/users/users.component';
+import { UsersDetailComponent } from './pages/admin/users/users-detail.component';
 
 
 
@@ -59,6 +61,16 @@ const app_routes: Routes = [
   {
     path: 'subcategoryDetail/:id',
     component: SubcategoryDetailComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'user',
+    component: UsersComponent,
+    canActivate: [AdminGuardGuard,VerifyTokenGuard]
+  },
+  {
+    path: 'userDetail/:id',
+    component: UsersDetailComponent,
     canActivate: [AdminGuardGuard,VerifyTokenGuard]
   },
   {

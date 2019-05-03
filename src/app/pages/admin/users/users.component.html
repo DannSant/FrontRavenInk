@@ -1,0 +1,55 @@
+<div class="big-container">
+  <!-- <input class="form-control form-control-lg" type="text" placeholder="Buscar" [(ngModel)]="term" (keyup)="search()"> -->
+  <div class="row" *ngIf="users.length<=0">
+      <div class="col-md-12">
+          <div class="alert alert-warning" role="alert">
+              No hay usuarios dados de alta
+          </div>
+      </div>
+  </div>
+  <div class="card">
+      <div class=card-body>
+          <h3 class="card-title">Subcategorias </h3>
+          <div class="text-right">
+              <button [routerLink]="['/subcategoryDetail','new']" type="button" class="btn btn-primary">
+              <i class="fa fa-plus"></i>
+              Nuevo usuario
+            </button>
+          </div>
+          <div class="row" *ngIf="users.length>0">
+              <div class="col-md-8">
+
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Rol</th>
+                              <th scope="col">Tipo</th>
+                              <th scope="col">Mayoreo</th>
+                              <th scope="col"></th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let user of users">
+
+                              <td>{{user.name}}</td>
+                              <td>{{user.email}}</td>
+                              <td>{{user.role}}</td>
+                              <td>{{user.type}}</td>
+                              <td>{{user.is_wholesale}}</td>
+                              <td>
+
+                                  <button class="btn btn-primary" [routerLink]="['/userDetail',user.id]"> <i class="far fa-edit"></i></button>
+                              </td>
+                          </tr>
+
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+  </div>
+</div>
+</div>

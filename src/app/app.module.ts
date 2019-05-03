@@ -19,6 +19,8 @@ import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { InventoryComponent } from './pages/admin/inventory/inventory.component';
 import { InventoryDetailComponent } from './pages/admin/inventory/inventory-detail.component';
+import { UsersComponent } from './pages/admin/users/users.component';
+import { UsersDetailComponent } from './pages/admin/users/users-detail.component';
 
 //Services
 import { UserService } from './services/user.service';
@@ -34,6 +36,7 @@ import { SubcategoriesComponent } from './pages/admin/subcategories/subcategorie
 import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
 import { CategoryDetailComponent } from './pages/admin/categories/category-detail.component';
 import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
+
 
 
 
@@ -54,7 +57,9 @@ import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.comp
     CategoryDetailComponent,
     SubcategoriesComponent,
     SubcategoryDetailComponent,
-    CheckoutConfirmComponent
+    CheckoutConfirmComponent,
+    UsersComponent,
+    UsersDetailComponent
 
   ],
   imports: [

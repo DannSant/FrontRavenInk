@@ -209,15 +209,18 @@ export class UserService {
     // });
   }
 
-  // loadAllUsers(){
-  //   let url = SERVICE_URL + "/user/all";
-  //   let headers = new HttpHeaders({token:this.token})
-  //   return this.http.get(url,{headers}).catch((e)=>{
-  //     let errorMessage = e.error.error.message;
-  //     this._alert.showAlert("Error","Ha ocurrido un error al recuperar los usuarios de la base de datos. Intenta recargar la pagina","error");
-  //     return Observable.throw(e);
-  //   });
-  // }
+   loadAllUsers(){
+    let headers = new HttpHeaders({
+      'token':this.token
+    });
+    let url = SERVICE_URL + "/user/list/all?active=false";
+    return this.http.get(url,{headers}).pipe(catchError(e =>{
+      console.log(e);
+      //let errorNumber:number = e.error.error.errno;
+      this._alert.showAlert("Error","Ha ocurrido un error al obtener los usuarios, intentar de nuevo mas tarde ","error");
+      return of(e)
+    }));
+  }
 
   // searchUsers(term:string){
   //   let url = SERVICE_URL + "/user/search/" + term;
