@@ -1,22 +1,21 @@
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { User } from "src/app/models/user";
-import { AlertService } from "../../services/alert.service";
-import { UserService } from "src/app/services/user.service";
 import { Router } from "@angular/router";
+import { AlertService } from "../../services/alert.service";
+import { UserService } from "../../services/user.service";
+import { User } from "../../models/user";
+import { NgForm } from "@angular/forms";
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
+  selector: "app-pwd-change",
+  templateUrl: "./pwd-change.component.html",
   styles: []
 })
-export class RegisterComponent implements OnInit {
+export class PwdChangeComponent implements OnInit {
   constructor(
     public router: Router,
     public _alert: AlertService,
     public _userService: UserService
   ) {}
-
   password2: string;
   user: User = {};
   errorMsg: string;
@@ -43,15 +42,20 @@ export class RegisterComponent implements OnInit {
     this.user.is_wholesale = "0";
     this.user.status = "1";
 
-    this._userService.registerNormalUser(this.user).subscribe((resp: any) => {
-      if (resp.ok) {
-        this._alert.showAlert(
-          "Gracias por registrarte",
-          "Tu registro esta completo, ya puedes empezar a comprar",
-          "success"
-        );
-        this.router.navigate(["/home"]);
-      }
-    });
+    this._userService
+      .updateUserPassword(
+        this._userService.loggedUser.id.toString(),
+        this.user.password
+      )
+      .subscribe((resp: any) => {
+        if (resp.ok) {
+          this._alert.showAlert(
+            "Password actualizado",
+            "Se ha actualizado la contraseña de manera exitosa",
+            "success"
+          );
+          this.router.navigate(["/profile"]);
+        }
+      });
   }
 }

@@ -10,7 +10,7 @@ import { User } from '../../../models/user';
   styles: []
 })
 export class UsersComponent implements OnInit {
-  users:User[];
+  users:User[]=[];
   constructor(
     public _alert:AlertService,
     public _userService:UserService,
@@ -18,10 +18,12 @@ export class UsersComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.loadUsers();
   }
 
   loadUsers(){
     this._userService.loadAllUsers().subscribe((resp:any)=>{
+      console.log(resp);
       if(resp.ok){
         this.users=resp.data;
 

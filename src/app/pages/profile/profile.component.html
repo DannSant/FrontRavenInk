@@ -1,0 +1,66 @@
+<div class="container">
+  <h3>Mi perfil</h3>
+  <form #f="ngForm" (ngSubmit)="updateData(f)" ngNativeValidation>
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="user.email"
+        name="email"
+        #email="ngModel"
+        aria-describedby="emailHelp"
+        placeholder="Ingresar email"
+        disabled="true"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="user.name"
+        name="name"
+        #name="ngModel"
+        placeholder="Ingresar nombre"
+        required
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="name.errors?.required && name.touched"
+      >
+        <small>Este campo es requerido</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Direccion</label>
+      <textarea
+        type="text"
+        class="form-control"
+        [(ngModel)]="user.address"
+        name="address"
+        #address="ngModel"
+        placeholder="Ingresar dirección donde quieras recibir tus productos"
+        required
+      ></textarea>
+      <div
+        class="alert alert-danger"
+        *ngIf="address.errors?.required && address.touched"
+      >
+        <small>Este campo es requerido</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+  <hr />
+
+  <button type="button" routerLink="/pwdChange" class="btn btn-secondary">
+    Modificar contraseña
+  </button>
+  <button type="button" routerLink="/home" class="btn btn-danger">
+    Regresar
+  </button>
+</div>

@@ -19,6 +19,8 @@ import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcateg
 import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { UsersDetailComponent } from './pages/admin/users/users-detail.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { PwdChangeComponent } from './pages/profile/pwd-change.component';
 
 
 
@@ -78,7 +80,16 @@ const app_routes: Routes = [
     component: CheckoutConfirmComponent,
     canActivate: [VerifyTokenGuard]
   },
-
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [VerifyTokenGuard]
+  },
+  {
+    path: 'pwdChange',
+    component: PwdChangeComponent,
+    canActivate: [VerifyTokenGuard]
+  },
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

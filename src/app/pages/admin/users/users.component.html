@@ -9,13 +9,8 @@
   </div>
   <div class="card">
       <div class=card-body>
-          <h3 class="card-title">Subcategorias </h3>
-          <div class="text-right">
-              <button [routerLink]="['/subcategoryDetail','new']" type="button" class="btn btn-primary">
-              <i class="fa fa-plus"></i>
-              Nuevo usuario
-            </button>
-          </div>
+          <h3 class="card-title">Usuarios </h3>
+
           <div class="row" *ngIf="users.length>0">
               <div class="col-md-8">
 
@@ -37,9 +32,9 @@
 
                               <td>{{user.name}}</td>
                               <td>{{user.email}}</td>
-                              <td>{{user.role}}</td>
-                              <td>{{user.type}}</td>
-                              <td>{{user.is_wholesale}}</td>
+                              <td>{{user.role | userRole}}</td>
+                              <td>{{user.type | userType}}</td>
+                              <td>{{user.is_wholesale | userWholesale}}</td>
                               <td>
 
                                   <button class="btn btn-primary" [routerLink]="['/userDetail',user.id]"> <i class="far fa-edit"></i></button>

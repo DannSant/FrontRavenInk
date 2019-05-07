@@ -110,7 +110,7 @@
                 <a routerLink="/login" class="nav-link m-2 menu-item nav-active">Inicia Sesion</a>
             </li>
 
-            <h4 *ngIf="_userService.loggedUser"><span class="badge badge-secondary">Bienvenido {{_userService.loggedUser.name}}</span></h4>
+            <h4 *ngIf="_userService.loggedUser"><span routerLink="/profile" class="badge badge-secondary">Bienvenido {{_userService.loggedUser.name}}</span></h4>
             <button *ngIf="_userService.loggedUser" (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="button">Salir </button>
 
         </ul>

@@ -21,6 +21,11 @@ import { InventoryComponent } from './pages/admin/inventory/inventory.component'
 import { InventoryDetailComponent } from './pages/admin/inventory/inventory-detail.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { UsersDetailComponent } from './pages/admin/users/users-detail.component';
+import { CategoriesComponent } from './pages/admin/categories/categories.component';
+import { SubcategoriesComponent } from './pages/admin/subcategories/subcategories.component';
+import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
+import { CategoryDetailComponent } from './pages/admin/categories/category-detail.component';
+import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
 
 //Services
 import { UserService } from './services/user.service';
@@ -31,11 +36,15 @@ import {AdminGuardGuard} from './services/admin-guard.guard';
 import { CategoryService } from './services/category.service';
 import { SubcategoryService } from './services/subcategory.service';
 import { VerifyTokenGuard } from './services/guards/verify-token.guard';
-import { CategoriesComponent } from './pages/admin/categories/categories.component';
-import { SubcategoriesComponent } from './pages/admin/subcategories/subcategories.component';
-import { SubcategoryDetailComponent } from './pages/admin/subcategories/subcategory-detail.component';
-import { CategoryDetailComponent } from './pages/admin/categories/category-detail.component';
-import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.component';
+import { UserRoleService } from './services/user-role.service';
+
+//Pipes
+import { UserRolePipe } from './pipes/user-role.pipe';
+import { UserTypePipe } from './pipes/user-type.pipe';
+import { UserWholesalePipe } from './pipes/user-wholesale.pipe';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { PwdChangeComponent } from './pages/profile/pwd-change.component';
+
 
 
 
@@ -59,7 +68,12 @@ import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.comp
     SubcategoryDetailComponent,
     CheckoutConfirmComponent,
     UsersComponent,
-    UsersDetailComponent
+    UsersDetailComponent,
+    UserRolePipe,
+    UserTypePipe,
+    UserWholesalePipe,
+    ProfileComponent,
+    PwdChangeComponent
 
   ],
   imports: [
@@ -78,7 +92,8 @@ import { CheckoutConfirmComponent } from './pages/checkout/checkout-confirm.comp
     CategoryService,
     SubcategoryService,
     AdminGuardGuard,
-    VerifyTokenGuard
+    VerifyTokenGuard,
+    UserRoleService
   ],
   bootstrap: [AppComponent]
 })
