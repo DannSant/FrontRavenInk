@@ -45,6 +45,8 @@ import { UserWholesalePipe } from './pipes/user-wholesale.pipe';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PwdChangeComponent } from './pages/profile/pwd-change.component';
 import { BannerComponent } from './shared/banner/banner.component';
+import { FirstWordPipe } from './pipes/first-word.pipe';
+import { SearchComponent } from './pages/search/search.component';
 
 
 
@@ -75,7 +77,9 @@ import { BannerComponent } from './shared/banner/banner.component';
     UserWholesalePipe,
     ProfileComponent,
     PwdChangeComponent,
-    BannerComponent
+    BannerComponent,
+    FirstWordPipe,
+    SearchComponent
 
   ],
   imports: [

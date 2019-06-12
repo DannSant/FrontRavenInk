@@ -1,0 +1,13 @@
+.collapsed {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  transition: width 0.5s;
+}
+
+.uncollapsed {
+  padding: 0 18px;
+  display: block;
+  overflow: hidden;
+  transition: width 0.5s;
+}
