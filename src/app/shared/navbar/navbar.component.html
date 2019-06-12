@@ -1,118 +1,63 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="d-flex flex-grow-1">
-        <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-        <a class="navbar-brand d-none d-lg-inline-block" href="#">
-         Raven Ink
-      </a>
-        <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
-            <img src="//placehold.it/40?text=LOGO" alt="logo">
-        </a>
-        <div class="w-100 text-right">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-    </div>
-    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
-        <ul class="navbar-nav ml-auto flex-nowrap">
-
-            <li *ngIf="_userService.isAdmin()" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Administración
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/inventory">Inventario</a>
-                    <a class="dropdown-item" routerLink="/category">Categorias</a>
-                    <a class="dropdown-item" routerLink="/subcategory">Subcategorias</a>
-                    <a class="dropdown-item" routerLink="/user">Usuarios</a>
-                </div>
+<!-- header -->
+<div class="header" id="home">
+    <div class="container">
+        <ul>
+            <li *ngIf="!_userService.loggedUser"> <a routerLink="/login"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Iniciar Sesion </a></li>
+            <li *ngIf="!_userService.loggedUser"> <a routerLink="/register"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Registrate </a></li>
+            <li *ngIf="_userService.loggedUser"> <a routerLink="/profile"><i class="fas fa-user-alt" aria-hidden="true"></i> Bienvenido {{_userService.loggedUser.name}} </a></li>
+            <li style="width: 30px;" *ngIf="_userService.loggedUser"> <a (click)="logout()"><i class="fas fa-sign-out-alt"style="display: inline-block;width: 100% "  aria-hidden="true"></i> </a></li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> 01234567898</li>
+            <li style="width: 30px;"><i class="fa fa-envelope-o" style="display: inline-block;width: 100% " aria-hidden="true"></i>
+                <a href="mailto:info@example.com"></a>
             </li>
-
-            <li class="nav-item" style="position: relative;bottom: 8px;">
-                <a routerLink="home" class="nav-link m-2 menu-item nav-active">Inicio</a>
-            </li>
-
-
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Ropa
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/catalog','1']">Hombre</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','2']">Mujer</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Accesorios
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/catalog','3']">Pines</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','4']">Botones</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','5']">Cristal</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','6']">Bisuteria</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','7']">Carteras</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','8']">Llaveros</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','9']">Monederos</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','10']">Parches</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Peluches y Figuras
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/catalog','11']">Peluches</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','12']">Almohadas</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','13']">Esculturas</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Arte en papel
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/catalog','14']">Sketchbooks</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','15']">Separadores</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','16']">Stickers</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','17']">Prints</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','18']">Postales</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','19']">Serigrafías</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Comic's
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/catalog','20']">Emmy</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','21']">Underneath</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','22']">Invitados</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Acerca de
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Contacto</a>
-                    <a class="dropdown-item" href="#">Nosotros</a>
-                </div>
-            </li>
-
-            <li *ngIf="!_userService.loggedUser" class="nav-item" style="position: relative;bottom: 8px;">
-                <a routerLink="/login" class="nav-link m-2 menu-item nav-active">Inicia Sesion</a>
-            </li>
-
-            <h4 *ngIf="_userService.loggedUser"><span routerLink="/profile" class="badge badge-secondary">Bienvenido {{_userService.loggedUser.name}}</span></h4>
-            <button *ngIf="_userService.loggedUser" (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="button">Salir </button>
-
         </ul>
     </div>
-</nav>
+</div>
+
+<!-- header-bot -->
+<div class="header-bot">
+    <div class="header-bot_inner_wthreeinfo_header_mid">
+        <div class="col-md-4 header-middle">
+            <form action="#" method="post">
+                <input class="searchtext" type="search" name="search" placeholder="Buscar..." required="">
+                <input type="submit" value=" " data-toggle="collapse" data-target="#searchtext">
+                <div class="clearfix"></div>
+            </form>
+        </div>
+        <!-- header-bot -->
+        <div class="col-md-3 logo_agile" style="height: 5em; position: relative ">
+            <h1><a href="index.html"><span>R</span>aven Ink </a></h1>
+        </div>
+        <!-- header-bot -->
+        <div class="col-md-3 agileits-social top_content">
+            <ul class="social-nav model-3d-0 footer-social w3_agile_social">
+                <li class="share"></li>
+                <li>
+                    <a href="https://www.facebook.com/Raven-Ink-Store-348896548904163/" class="facebook" target="_blank">
+                        <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/raveninkstore" class="twitter" target="_blank">
+                        <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/raveninkstore" class="instagram" target="_blank">
+                        <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+            </ul>
+
+
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //header-bot -->
+
+<!--// header -->
