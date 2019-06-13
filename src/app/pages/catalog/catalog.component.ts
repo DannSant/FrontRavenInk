@@ -30,12 +30,14 @@ export class CatalogComponent implements OnInit {
         this.router.navigate(["/home"]);
       }
       this._inventory.getItemsBySubcategory(id).subscribe((resp:any)=>{
-        
+       
         if(resp.ok){
           this.items=resp.data;
           if(resp.data.length>0){
             this.subcategory = resp.data[0].subcategory_name;
-          }
+          } 
+        }else {         
+          this.items = [];          
         }
       });
 

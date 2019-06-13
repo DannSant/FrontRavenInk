@@ -57,12 +57,9 @@ export class InventoryService {
       catchError(e => {
         console.log(e);
         //let errorNumber:number = e.error.error.errno;
-        if (e.error.code) {
-          this._alert.showAlert(
-            "Error",
-            "No se han encontrado productos de esa categoria",
-            "error"
-          );
+       let noError = e.error.code
+        if (noError==2) {
+          
         } else {
           this._alert.showAlert(
             "Error",

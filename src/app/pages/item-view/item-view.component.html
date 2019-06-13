@@ -1,61 +1,25 @@
 <div class="banner-bootom-w3-agileits">
-  <div class="container">
-    <div class="col-md-4 single-right-left ">
-      <div class="grid images_3_of_2">
-        <div class="flexslider">
+    <div class="container">
+        <div class="col-md-4 single-right-left ">
+            <div class="grid images_3_of_2">
+                <img class="zoom-img" style="width: 100%" src="../../../assets/img/items/{{item.img}}?w=400" attr.data-zoom="../../../assets/img/items/{{item.img}}?w=1200" onError="this.src='../../../../assets/img/no-image.jpg'">
 
 
-          <div class="clearfix"></div>
-          <div class="flex-viewport" style="overflow: hidden; position: relative;">
-            <ul class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(-93px, 0px, 0px);">
-              <li data-thumb="../../../assets/img/items/BOT25001.png" class="clone" aria-hidden="true"
-                style="width: 93px; float: left; display: block;">
-                <div class="thumb-image"> <img src="../../../assets/img/items/BOT25001.png" data-imagezoom="true"
-                    class="img-responsive" draggable="false"> </div>
-              </li>
-              <li data-thumb="../../../assets/img/items/BOT25002.jpg" style="width: 93px; float: left; display: block;"
-                class="flex-active-slide">
-                <div class="thumb-image"> <img src="../../../assets/img/items/BOT25002.jpg" data-imagezoom="true"
-                    class="img-responsive" draggable="false"> </div>
-              </li>
-              <li data-thumb="../../../assets/img/items/BOT25003.jpg" class=""
-                style="width: 93px; float: left; display: block;">
-                <div class="thumb-image"> <img src="../../../assets/img/items/BOT25003.jpg" data-imagezoom="true"
-                    class="img-responsive" draggable="false"> </div>
-              </li>
-              <li data-thumb="../../../assets/img/items/BOT25001.png" class=""
-                style="width: 93px; float: left; display: block;">
-                <div class="thumb-image"> <img src="../../../assets/img/items/BOT25001.png" data-imagezoom="true"
-                    class="img-responsive" draggable="false"> </div>
-              </li>
-              <li data-thumb="../../../assets/img/items/BOT25002.jpg" style="width: 93px; float: left; display: block;"
-                class="clone" aria-hidden="true">
-                <div class="thumb-image"> <img src="../../../assets/img/items/BOT25002.jpg" data-imagezoom="true"
-                    class="img-responsive" draggable="false"> </div>
-              </li>
-            </ul>
-          </div>
-          <ol class="flex-control-nav flex-control-thumbs">
-            <li><img src="../../../assets/img/items/BOT25001.png" class="flex-active" draggable="false"></li>
-            <li><img src="../../../assets/img/items/BOT25002.jpg" draggable="false" class=""></li>
-            <li><img src="../../../assets/img/items/BOT25003.jpg" draggable="false" class=""></li>
-          </ol>
-          <ul class="flex-direction-nav">
-            <li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li>
-            <li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li>
-          </ul>
+            </div>
         </div>
-      </div>
+        <div class="col-md-8 single-right-left simpleCart_shelfItem zoom-pane">
+            <h3>{{ item.item_name }}</h3>
+            <br>
+            <p>
+                <span class="item_price">${{ currentPrice }}</span>
+                <del>- ${{ currentPrice + 150 }}</del>
+            </p>
+            <br>
+            <div class="description">
+                <h5>{{ item.description }}</h5>
+            </div>
+            <br>
+            <button class="btn btn-primary" [routerLink]="['/cart',item.id]">Añadir al carrito</button>
+        </div>
     </div>
-    <div class="col-md-8 single-right-left simpleCart_shelfItem">
-      <h3>{{ item.item_name }}</h3>
-      <p>
-        <span class="item_price">${{ currentPrice }}</span>
-        <del>- ${{ currentPrice + 150 }}</del>
-      </p>
-      <div class="description">
-        <h5>{{ item.description }}</h5>
-      </div>
-    </div>
-  </div>
 </div>
