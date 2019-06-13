@@ -1,25 +1,64 @@
 <div class="banner-bootom-w3-agileits">
-    <div class="container">
-        <div class="col-md-4 single-right-left ">
-            <div class="grid images_3_of_2">
-                <img class="zoom-img" style="width: 100%" src="../../../assets/img/items/{{item.img}}?w=400" attr.data-zoom="../../../assets/img/items/{{item.img}}?w=1200" onError="this.src='../../../../assets/img/no-image.jpg'">
+  <div class="container">
+    <div class="col-md-4 single-right-left ">
+      <!-- <div class="grid images_3_of_2">
+        <img class="zoom-img" style="width: 100%" src="../../../assets/img/items/{{item.img | firstImage}}?w=400"
+          attr.data-zoom="../../../assets/img/items/{{item.img | firstImage}}?w=1200"
+          onError="this.src='../../../../assets/img/items/no-image.jpg'">
+      </div>-->
+
+      <div class="slider grid images_3_of_2">
+        <input type="radio" name="slide_switch" id="id1" (click)="changeImage(1)" />
+        <label for="id1">
+          <img src="../../../assets/img/items/{{item.img | firstImage}}?w=400" width="100" />
+        </label>
+        <img class="zoom-img" src="../../../assets/img/items/{{item.img | firstImage}}?w=400"
+          attr.data-zoom="../../../assets/img/items/{{item.img | firstImage}}?w=1200" />
+
+        <!--Lets show the second image by default on page load-->
+        <input type="radio" name="slide_switch" id="id2" checked="checked" (click)="changeImage(2)" />
+        <label for="id2">
+          <img src="../../../assets/img/items/{{item.img | firstImage}}?w=400" width="100" />
+        </label>
+        <img class="zoom-img2" src="../../../assets/img/items/{{item.img | firstImage}}?w=400"
+          attr.data-zoom="../../../assets/img/items/{{item.img | firstImage}}?w=1200" />
+
+        <input type="radio" name="slide_switch" id="id3" (click)="changeImage(3)" />
+        <label for="id3">
+          <img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg" width="100" />
+        </label>
+        <img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg" />
+
+        <input type="radio" name="slide_switch" id="id4" />
+        <label for="id4">
+          <img src="http://thecodeplayer.com/uploads/media/2rT2vdx.jpg" width="100" />
+        </label>
+        <img src="http://thecodeplayer.com/uploads/media/2rT2vdx.jpg" />
+
+        <input type="radio" name="slide_switch" id="id5" />
+        <label for="id5">
+          <img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg" width="100" />
+        </label>
+        <img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg" />
+      </div>
 
 
-            </div>
-        </div>
-        <div class="col-md-8 single-right-left simpleCart_shelfItem zoom-pane">
-            <h3>{{ item.item_name }}</h3>
-            <br>
-            <p>
-                <span class="item_price">${{ currentPrice }}</span>
-                <del>- ${{ currentPrice + 150 }}</del>
-            </p>
-            <br>
-            <div class="description">
-                <h5>{{ item.description }}</h5>
-            </div>
-            <br>
-            <button class="btn btn-primary" [routerLink]="['/cart',item.id]">Añadir al carrito</button>
-        </div>
+
+
     </div>
+    <div class="col-md-8 single-right-left simpleCart_shelfItem zoom-pane">
+      <h3>{{ item.item_name }}</h3>
+      <br>
+      <p>
+        <span class="item_price">${{ currentPrice }}</span>
+        <del>- ${{ currentPrice + 150 }}</del>
+      </p>
+      <br>
+      <div class="description">
+        <h5>{{ item.description }}</h5>
+      </div>
+      <br>
+      <button class="btn btn-primary" [routerLink]="['/cart',item.id]">Añadir al carrito</button>
+    </div>
+  </div>
 </div>

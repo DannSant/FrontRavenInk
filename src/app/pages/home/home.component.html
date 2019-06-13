@@ -1,19 +1,21 @@
 <div class="container" style="margin-top: 30px;">
-    <h2>Lo mas vendido</h2>
-    <div *ngIf="items.length<=0" class="alert alert-warning" role="alert">No se han encontrado productos en la categoria seleccionada</div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4" *ngFor="let item of items">
-            <div class="thumbnail">
-                <img class="card-img-top" src="../../../../assets/img/items/{{item.code}}.jpg" alt="Card image cap" onError="this.src='../../../../assets/img/no-image.jpg'">
-                <div class="caption">
-                    <h5>{{item.item_name}}</h5>
-                    <p>{{item.description}}</p>
-                    <button class="btn btn-primary" [routerLink]="['/item',item.id]">Ver</button>
-                    <button class="btn btn-success" [routerLink]="['/cart',item.id]">Comprar</button>
-                </div>
-            </div>
+  <h2>Lo mas vendido</h2>
+  <div *ngIf="items.length<=0" class="alert alert-warning" role="alert">No se han encontrado productos en la categoria
+    seleccionada</div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let item of items">
+      <div class="thumbnail">
+        <img class="card-img-top" src="../../../../assets/img/items/{{item.img | firstImage}}" alt="Card image cap"
+          onError="this.src='../../../../assets/img/items/no-image.jpg'">
+        <div class="caption">
+          <h5>{{item.item_name}}</h5>
+          <p>{{item.description}}</p>
+          <button class="btn btn-primary" [routerLink]="['/item',item.id]">Ver</button>
+          <button class="btn btn-success" [routerLink]="['/cart',item.id]">Comprar</button>
         </div>
+      </div>
     </div>
+  </div>
 
 </div>
 

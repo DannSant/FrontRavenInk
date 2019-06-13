@@ -9,19 +9,20 @@ import { InventoryService } from 'src/app/services/inventory.service';
 })
 export class HomeComponent implements OnInit {
 
-  items:InventoryItem[]=[];
+  items: InventoryItem[] = [];
+
 
   constructor(
-    public _inventoryService:InventoryService
+    public _inventoryService: InventoryService
   ) { }
 
   ngOnInit() {
-    this._inventoryService.getInventoryItemsList("most_sold").subscribe((resp:any)=>{
+    this._inventoryService.getInventoryItemsList("most_sold").subscribe((resp: any) => {
       //console.log(resp);
-      if(resp.ok){
-        this.items=resp.data;
+      if (resp.ok) {
+        this.items = resp.data;
       }
     });
-   }
+  }
 
 }

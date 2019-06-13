@@ -11,26 +11,27 @@ import { AlertService } from 'src/app/services/alert.service';
   styles: []
 })
 export class CartReviewComponent implements OnInit {
-  item:InventoryItem={};
-  existance:number=0;
+  item: InventoryItem = {};
+  existance: number = 0;
   constructor(
-    public _userService:UserService,
-    public _inventoryService:InventoryService,
-    public _alert:AlertService,
-    public router:Router,
-    public activatedRoute:ActivatedRoute
+    public _userService: UserService,
+    public _inventoryService: InventoryService,
+    public _alert: AlertService,
+    public router: Router,
+    public activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params)=>{
-      let id=params.id;
-      if(!this._userService.loggedUser){
-        this.router.navigate(["/login",'cart',id])
-      }else {
-        this._inventoryService.getItem(id).subscribe(resp=>{
+    return;
+    this.activatedRoute.params.subscribe((params) => {
+      let id = params.id;
+      if (!this._userService.loggedUser) {
+        this.router.navigate(["/login", 'cart', id])
+      } else {
+        this._inventoryService.getItem(id).subscribe(resp => {
 
-          if(resp.ok){
-            this.item=resp.data[0];
+          if (resp.ok) {
+            this.item = resp.data[0];
           }
         });
       }
@@ -38,24 +39,24 @@ export class CartReviewComponent implements OnInit {
 
   }
 
-  validateExistance(event){
+  validateExistance(event) {
 
-    if(this.existance>this.item.existance){
-      this.existance=this.item.existance;
-      this._alert.showAlert("Error","No puedes seleccionar mas de " + this.item.existance + " producto(s)","error")
+    if (this.existance > this.item.existance) {
+      this.existance = this.item.existance;
+      this._alert.showAlert("Error", "No puedes seleccionar mas de " + this.item.existance + " producto(s)", "error")
       //event.preventDefault()
 
     }
   }
 
-  checkoutPage(){
-    if(this.existance>this.item.existance){
-      this.existance=this.item.existance;
-      this._alert.showAlert("Error","No puedes seleccionar mas de " + this.item.existance + " producto(s)","error")
+  checkoutPage() {
+    if (this.existance > this.item.existance) {
+      this.existance = this.item.existance;
+      this._alert.showAlert("Error", "No puedes seleccionar mas de " + this.item.existance + " producto(s)", "error")
       //event.preventDefault()
 
     }
-    this.router.navigate(['/checkout',this.existance,this.item.id])
+    this.router.navigate(['/checkout', this.existance, this.item.id])
   }
 
 }

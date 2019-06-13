@@ -47,6 +47,8 @@ import { PwdChangeComponent } from './pages/profile/pwd-change.component';
 import { BannerComponent } from './shared/banner/banner.component';
 import { FirstWordPipe } from './pipes/first-word.pipe';
 import { SearchComponent } from './pages/search/search.component';
+import { FirstImagePipe } from './pipes/first-image.pipe';
+import { ArrayImagePipe } from './pipes/array-image.pipe';
 
 
 
@@ -79,7 +81,9 @@ import { SearchComponent } from './pages/search/search.component';
     PwdChangeComponent,
     BannerComponent,
     FirstWordPipe,
-    SearchComponent
+    SearchComponent,
+    FirstImagePipe,
+    ArrayImagePipe
 
   ],
   imports: [
