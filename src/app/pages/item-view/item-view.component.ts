@@ -15,8 +15,11 @@ export class ItemViewComponent implements OnInit {
   item: InventoryItem = {};
   suggestedItems: InventoryItem[] = [];
   currentPrice: number;
-  img1: any;
-  img2: any;
+  selectedImageIdx = 0;
+
+
+  imageZoomArray: any[];
+ 
   constructor(
     public _inventoryService: InventoryService,
     public _alert: AlertService,
@@ -62,25 +65,39 @@ export class ItemViewComponent implements OnInit {
   }
 
   finishLoadingData() {
-    this.img1 = new Drift(document.querySelector(".zoom-img"), {
-      paneContainer: document.querySelector(".zoom-pane")
-    });
-    this.img2 = new Drift(document.querySelector(".zoom-img2"), {
-      paneContainer: document.querySelector(".zoom-pane")
-    });
+    let imagesUrls = this.item.img.split(";");
+    let idx = 0;
+    for (let url of imagesUrls){
+      this.imageZoomArray = new Drift(document.querySelector(".zoom-img" + idx), {
+        paneContainer: document.querySelector(".zoom-pane")
+      });
+      idx++;
+    }
+
+    this.changeImage(0);
+
+    // this.img1 = new Drift(document.querySelector(".zoom-img"), {
+    //   paneContainer: document.querySelector(".zoom-pane")
+    // });
+    // this.img2 = new Drift(document.querySelector(".zoom-img2"), {
+    //   paneContainer: document.querySelector(".zoom-pane")
+    // });
   }
 
-  changeImage(img: number) {
-    if (img == 1) {
-      this.img1.enable();
-      this.img2.disable();
-    } else if (img == 2) {
-      this.img2.enable();
-      this.img1.disable();
-    } else {
-      this.img2.disable();
-      this.img1.disable();
+  changeImage(idx: number) {
+    this.selectedImageIdx=idx;
+    let i=0;
+    for (let imageZoom of this.imageZoomArray){
+      if(i==idx){
+        imageZoom[i].enable();
+      }else {
+        imageZoom[i].disable();
+      }
     }
+  }
+
+  getDisplay(idx:number){
+    return idx==this.selectedImageIdx?'block':'none';
   }
 
 }
