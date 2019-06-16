@@ -19,7 +19,7 @@ export class ItemViewComponent implements OnInit {
 
 
   imageZoomArray: any[];
- 
+
   constructor(
     public _inventoryService: InventoryService,
     public _alert: AlertService,
@@ -67,7 +67,7 @@ export class ItemViewComponent implements OnInit {
   finishLoadingData() {
     let imagesUrls = this.item.img.split(";");
     let idx = 0;
-    for (let url of imagesUrls){
+    for (let url of imagesUrls) {
       this.imageZoomArray = new Drift(document.querySelector(".zoom-img" + idx), {
         paneContainer: document.querySelector(".zoom-pane")
       });
@@ -85,19 +85,24 @@ export class ItemViewComponent implements OnInit {
   }
 
   changeImage(idx: number) {
-    this.selectedImageIdx=idx;
-    let i=0;
-    for (let imageZoom of this.imageZoomArray){
-      if(i==idx){
+    this.selectedImageIdx = idx;
+    let i = 0;
+    for (let imageZoom of this.imageZoomArray) {
+      if (i == idx) {
         imageZoom[i].enable();
-      }else {
+      } else {
         imageZoom[i].disable();
       }
     }
   }
 
-  getDisplay(idx:number){
-    return idx==this.selectedImageIdx?'block':'none';
+  getOpacity(idx: number) {
+    //return idx==this.selectedImageIdx?'block':'none';
+    return idx == this.selectedImageIdx ? '1' : '0';
+  }
+
+  getDisplay(idx) {
+    return idx == this.selectedImageIdx ? 'block' : 'none';
   }
 
 }

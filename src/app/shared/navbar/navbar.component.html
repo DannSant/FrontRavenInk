@@ -3,38 +3,28 @@
   <div class="container">
     <ul>
       <li *ngIf="!_userService.loggedUser">
-        <a routerLink="/login"
-          ><i class="fa fa-unlock-alt" aria-hidden="true"></i> Iniciar Sesion
+        <a routerLink="/login"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Iniciar Sesion
         </a>
       </li>
       <li *ngIf="!_userService.loggedUser">
-        <a routerLink="/register"
-          ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Registrate
+        <a routerLink="/register"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Registrate
         </a>
       </li>
       <li *ngIf="_userService.loggedUser">
-        <a routerLink="/profile"
-          ><i class="fas fa-user-alt" aria-hidden="true"></i> Bienvenido
+        <a routerLink="/profile"><i class="fas fa-user-alt" aria-hidden="true"></i> Bienvenido
           {{ _userService.loggedUser.name | firstWord }}
         </a>
       </li>
       <li style="width: 30px;" *ngIf="_userService.loggedUser">
-        <a (click)="logout()"
-          ><i
-            class="fas fa-sign-out-alt"
-            style="display: inline-block;width: 100% "
-            aria-hidden="true"
-          ></i>
+        <a (click)="logout()"><i class="fas fa-sign-out-alt" style="display: inline-block;width: 100% "
+            aria-hidden="true"></i>
         </a>
       </li>
       <li><i class="fa fa-phone" aria-hidden="true"></i> 01234567898</li>
       <li style="width: 30px;">
-        <i
-          class="fa fa-envelope-o"
-          style="display: inline-block;width: 100% "
-          aria-hidden="true"
-        ></i>
-        <a href="mailto:info@example.com"></a>
+        <a href="mailto:contacto@raveninkstore.com">
+          <i class="fa fa-envelope-o" style="display: inline-block;width: 100% " aria-hidden="true"></i>
+        </a>
       </li>
     </ul>
   </div>
@@ -45,25 +35,14 @@
   <div class="header-bot_inner_wthreeinfo_header_mid">
     <div class="col-md-4 header-middle">
       <form action="#" method="post">
-        <input
-          [className]="isCollapsed ? 'collapsed' : 'other-class'"
-          type="search"
-          name="search"
-          [(ngModel)]="searchTerm"
-          placeholder="Buscar..."
-          required=""
-          id="searchInput"
-          (keydown)="search($event)"
-        />
+        <input [className]="isCollapsed ? 'collapsed' : 'other-class'" type="search" name="search"
+          [(ngModel)]="searchTerm" placeholder="Buscar..." required="" id="searchInput" (keydown)="search($event)" />
         <input type="submit" value=" " (click)="isCollapsed = !isCollapsed" />
         <div class="clearfix"></div>
       </form>
     </div>
     <!-- header-bot -->
-    <div
-      class="col-md-4 col-sm-6 logo_agile"
-      style="height: 5em; position: relative "
-    >
+    <div class="col-md-4 col-sm-6 logo_agile" style="height: 5em; position: relative ">
       <h1>
         <a routerLink="home"><span>R</span>aven Ink </a>
       </h1>
@@ -73,11 +52,7 @@
       <ul class="social-nav model-3d-0 footer-social w3_agile_social">
         <li class="share"></li>
         <li>
-          <a
-            href="https://www.facebook.com/Raven-Ink-Store-348896548904163/"
-            class="facebook"
-            target="_blank"
-          >
+          <a href="https://www.facebook.com/Raven-Ink-Store-348896548904163/" class="facebook" target="_blank">
             <div class="front">
               <i class="fa fa-facebook" aria-hidden="true"></i>
             </div>
@@ -87,11 +62,7 @@
           </a>
         </li>
         <li>
-          <a
-            href="https://twitter.com/raveninkstore"
-            class="twitter"
-            target="_blank"
-          >
+          <a href="https://twitter.com/raveninkstore" class="twitter" target="_blank">
             <div class="front">
               <i class="fa fa-twitter" aria-hidden="true"></i>
             </div>
@@ -101,11 +72,7 @@
           </a>
         </li>
         <li>
-          <a
-            href="https://www.instagram.com/raveninkstore"
-            class="instagram"
-            target="_blank"
-          >
+          <a href="https://www.instagram.com/raveninkstore" class="instagram" target="_blank">
             <div class="front">
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </div>
