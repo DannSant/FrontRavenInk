@@ -1,5 +1,10 @@
 <div class="banner-bootom-w3-agileits">
   <div class="container">
+    <div *ngIf="isEmpty(item)">
+      <div class="alert alert-warning" role="alert">No se han encontrado productos en la categoria
+        seleccionada</div>
+      <div class="loader" [ngStyle]="{'display:none': finishedLoading==true}"></div>
+    </div>
     <div class="col-md-4 single-right-left ">
       <!-- <div class="grid images_3_of_2">
         <img class="zoom-img" style="width: 100%" src="../../../assets/img/items/{{item.img | firstImage}}?w=400"

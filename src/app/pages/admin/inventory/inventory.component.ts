@@ -11,33 +11,35 @@ import { InventoryService } from '../../../services/inventory.service';
 })
 export class InventoryComponent implements OnInit {
 
-  inventoryItems:InventoryItem[]=[];
+  inventoryItems: InventoryItem[] = [];
+  finishedLoading: boolean = false;
   constructor(
-    public _alert:AlertService,
-    public _inventoryService:InventoryService,
-    public router:Router,
-    public activatedRoute:ActivatedRoute,
+    public _alert: AlertService,
+    public _inventoryService: InventoryService,
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.loadItems();
   }
 
-  loadItems(){
-
-    this._inventoryService.getInventoryItemsAll().subscribe((resp:any)=>{
-      if(resp.ok){
-        this.inventoryItems=resp.data;
+  loadItems() {
+    this.finishedLoading = false;
+    this._inventoryService.getInventoryItemsAll().subscribe((resp: any) => {
+      this.finishedLoading = true;
+      if (resp.ok) {
+        this.inventoryItems = resp.data;
 
       }
     });
   }
 
-  deleteItem(item:InventoryItem){
+  deleteItem(item: InventoryItem) {
     let id = item.id.toString();
-    this._inventoryService.deleteItem(id).subscribe((resp:any)=>{
-      if(resp.ok){
-        this._alert.showAlert("Producto borrado","Se ha eliminado el producto con exito","success");
+    this._inventoryService.deleteItem(id).subscribe((resp: any) => {
+      if (resp.ok) {
+        this._alert.showAlert("Producto borrado", "Se ha eliminado el producto con exito", "success");
         this.loadItems();
       }
     });

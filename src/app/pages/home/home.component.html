@@ -1,7 +1,10 @@
 <div class="container" style="margin-top: 30px;">
-  <h2>Lo mas vendido</h2>
-  <div *ngIf="items.length<=0" class="alert alert-warning" role="alert">No se han encontrado productos en la categoria
-    seleccionada</div>
+  <h2>Lo más vendido</h2>
+  <div *ngIf="items.length<=0">
+    <div class="alert alert-warning" role="alert">No se han encontrado productos en la categoria
+      seleccionada</div>
+    <div class="loader" [ngStyle]="{'display:none': finishedLoading==true}"></div>
+  </div>
   <div class="row">
     <div class="col-sm-6 col-md-4" *ngFor="let item of items">
       <div class="thumbnail">

@@ -105,4 +105,12 @@ export class ItemViewComponent implements OnInit {
     return idx == this.selectedImageIdx ? 'block' : 'none';
   }
 
+  isEmpty(obj: any) {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+  }
+
 }
