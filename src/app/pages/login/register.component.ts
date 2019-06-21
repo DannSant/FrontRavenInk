@@ -4,6 +4,7 @@ import { User } from "src/app/models/user";
 import { AlertService } from "../../services/alert.service";
 import { UserService } from "src/app/services/user.service";
 import { Router } from "@angular/router";
+import { LanguageConfigService } from '../../services/language-config.service';
 
 @Component({
   selector: "app-register",
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     public router: Router,
     public _alert: AlertService,
-    public _userService: UserService
+    public _userService: UserService,
+    public _languageService:LanguageConfigService
   ) {}
 
   password2: string;

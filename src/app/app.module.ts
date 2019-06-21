@@ -38,6 +38,7 @@ import { SubcategoryService } from './services/subcategory.service';
 import { VerifyTokenGuard } from './services/guards/verify-token.guard';
 import { UserRoleService } from './services/user-role.service';
 import { InventoryListsService } from './services/inventory-lists.service';
+import { LanguageConfigService } from './services/language-config.service';
 
 //Pipes
 import { UserRolePipe } from './pipes/user-role.pipe';
@@ -58,6 +59,8 @@ import { ItemSelectorComponent } from './shared/item-selector/item-selector.comp
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { LanguagePipe } from './pipes/language.pipe';
+
 
 
 
@@ -96,7 +99,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
     ListDisplayComponent,
     InventoryListsComponent,
     InventoryListsDetailComponent,
-    ItemSelectorComponent
+    ItemSelectorComponent,
+    LanguagePipe
 
   ],
   imports: [
@@ -118,7 +122,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
     AdminGuardGuard,
     VerifyTokenGuard,
     UserRoleService,
-    InventoryListsService
+    InventoryListsService,
+    LanguageConfigService
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]

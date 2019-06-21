@@ -1,7 +1,7 @@
 <app-banner></app-banner>
 
 <div *ngFor="let list of lists">
-    <app-list-display [list-name]="list.code" [list-display-name]="list.display_name">
+    <app-list-display [list-name]="list.code" [list-display-name]="getDisplayName(list)">
     </app-list-display>
     <hr>
 </div>

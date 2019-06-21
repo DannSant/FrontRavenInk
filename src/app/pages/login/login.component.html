@@ -1,27 +1,27 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h3>Inicia sesión</h3>
+            <h3>{{'sigin' | language:_languageService.currentLanguage }}</h3>
             <form (ngSubmit)="login()">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Ingresar email">
-                    <small id="emailHelp" class="form-text text-muted">No compartimos tu email con nadie</small>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="{{'enter_email' | language:_languageService.currentLanguage }}">
+                    <small id="emailHelp" class="form-text text-muted">{{'we_do_not_share_email' | language:_languageService.currentLanguage }}</small>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Ingresar Password">
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="{{'enter_password' | language:_languageService.currentLanguage }}">
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="remember" name="remember" [(ngModel)]="password">
-                    <label class="form-check-label" for="remember">Recordar</label>
+                    <label class="form-check-label" for="remember">{{'remember_signin_info' | language:_languageService.currentLanguage }}</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+                <button type="submit" class="btn btn-primary">{{'sigin' | language:_languageService.currentLanguage }}</button>
             </form>
             <hr>
-            <h4>Si no tienes cuenta</h4>
-            <button type="button" routerLink="/register" class="btn btn-outline-primary">Registrate</button>
+            <h4>{{'if_you_dont_have_account' | language:_languageService.currentLanguage }}</h4>
+            <button type="button" routerLink="/register" class="btn btn-outline-primary">{{'signup' | language:_languageService.currentLanguage }}</button>
         </div>
     </div>
 </div>

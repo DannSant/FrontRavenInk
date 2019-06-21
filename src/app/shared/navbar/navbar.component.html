@@ -8,89 +8,89 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/home">Inicio</a>
+                <a class="nav-link" routerLink="/home">{{'home' | language:_languageService.currentLanguage }}</a>
             </li>
             <li class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Ropa
+                        {{'clothes' | language:_languageService.currentLanguage }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['/catalog','1']">Hombre</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','2']">Mujer</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','1']">{{'men' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','2']">{{'women' | language:_languageService.currentLanguage }}</a>
                 </div>
             </li>
             <li class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Accesorios
+                        {{'accesories' | language:_languageService.currentLanguage }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['/catalog','3']">Pines</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','4']">Botones</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','5']">Cristal</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','6']">Bisuteria</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','7']">Carteras</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','8']">Llaveros</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','9']">Monederos</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','10']">Parches</a>
-                </div>
-            </li>
-
-            <li class="nav-item dropdown" routerLinkActive="active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Peluches y figuras
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['/catalog','11']">Peluches</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','12']">Almohadas</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','13']">Esculturas</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','3']">{{'pins' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','4']">{{'buttons' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','5']">{{'crystal' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','6']">{{'jewels' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','7']">{{'wallets' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','8']">{{'keychains' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','9']">{{'purses' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','10']">{{'patches' | language:_languageService.currentLanguage }}</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Arte en papel
+                        {{'plushies_and_figures' | language:_languageService.currentLanguage }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['/catalog','14']">Sketchbooks</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','15']">Separadores</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','16']">Stickers</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','17']">Prints</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','18']">Postales</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','19']">Serigrafías</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','11']">{{'plushies' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','12']">{{'pillows' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','13']">{{'sculture' | language:_languageService.currentLanguage }}</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Comics
+                        {{'paper_art' | language:_languageService.currentLanguage }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" [routerLink]="['/catalog','20']">Emmy</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','21']">Underneath</a>
-                    <a class="dropdown-item" [routerLink]="['/catalog','22']">Invitados</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','14']">{{'sketchbook' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','15']">{{'separator' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','16']">{{'stickers' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','17']">{{'prints' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','18']">{{'postals' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','19']">{{'serigraphs' | language:_languageService.currentLanguage }}</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Acerca de
+                        {{'comics' | language:_languageService.currentLanguage }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a href="icons.html">Sobre nosotros</a>
-                    <a href="typography.html">Contacto</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','20']">{{'emmy' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','21']">{{'underneath' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" [routerLink]="['/catalog','22']">{{'guests' | language:_languageService.currentLanguage }}</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{'about' | language:_languageService.currentLanguage }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a href="icons.html">{{'contact' | language:_languageService.currentLanguage }}</a>
+                    <a href="typography.html">{{'us' | language:_languageService.currentLanguage }}</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown" routerLinkActive="active" *ngIf="_userService.isAdmin()">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Administracion
+                        {{'admin' | language:_languageService.currentLanguage }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" routerLink="/inventory">Inventario</a>
-                    <a class="dropdown-item" routerLink="/category">Categorias</a>
-                    <a class="dropdown-item" routerLink="/subcategory">Subcategorias</a>
-                    <a class="dropdown-item" routerLink="/user">Usuarios</a>
-                    <a class="dropdown-item" routerLink="/inventoryList">Listas de items</a>
+                    <a class="dropdown-item" routerLink="/inventory">{{'inventory' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" routerLink="/category">{{'categories' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" routerLink="/subcategory">{{'subcategories' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" routerLink="/user">{{'users' | language:_languageService.currentLanguage }}</a>
+                    <a class="dropdown-item" routerLink="/inventoryList">{{'lists' | language:_languageService.currentLanguage }}</a>
                 </div>
             </li>
 
@@ -104,26 +104,47 @@
                     <i *ngIf="_userService.loggedUser" class="fas fa-user-check fa-2x" style="color: yellowgreen"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a *ngIf="!_userService.loggedUser" class="dropdown-item" routerLink="/login">Iniciar Sesión</a>
-                    <a *ngIf="!_userService.loggedUser" class="dropdown-item" routerLink="/register">Registrarse</a>
+                    <a *ngIf="!_userService.loggedUser" class="dropdown-item" routerLink="/login">{{'sigin' | language:_languageService.currentLanguage }}</a>
+                    <a *ngIf="!_userService.loggedUser" class="dropdown-item" routerLink="/register">{{'signup' | language:_languageService.currentLanguage }}</a>
                     <a *ngIf="_userService.loggedUser" class="dropdown-item" routerLink="/profile"><i class="fas fa-user-circle"></i> {{_userService.loggedUser.name | firstWord}}</a>
-                    <a *ngIf="_userService.loggedUser" class="dropdown-item" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    <a *ngIf="_userService.loggedUser" class="dropdown-item" (click)="logout()"><i class="fas fa-sign-out-alt"></i> {{'logout' | language:_languageService.currentLanguage }}</a>
 
                 </div>
             </li>
             <li>
-                <a href=""><i class="fas fa-search fa-2x"></i></a>
+                <a (click)="basicModal.show()"><i class="fas fa-search fa-2x"></i></a>
             </li>
             <li>
                 <a href=""><i class="fas fa-cart-plus fa-2x"></i></a>
             </li>
             <li>
-                <a href=""><img class="img-fluid" src="../../../assets/img/MX_color.png" alt=""></a>
+                <a (click)="changeLanguage(0)" *ngIf="_languageService.currentLanguage=='spanish'"><img class="img-fluid" src="../../../assets/img/MX_color.png" alt=""></a>
+                <a (click)="changeLanguage(0)" *ngIf="_languageService.currentLanguage!='spanish'"><img class="img-fluid" src="../../../assets/img/MX_B&W.png" alt=""></a>
             </li>
             <li>
-                <a href=""><img class="img-fluid" src="../../../assets/img/USA_B&W.png" alt=""></a>
+                <a (click)="changeLanguage(1)" *ngIf="_languageService.currentLanguage=='english'"><img class="img-fluid" src="../../../assets/img/USA_color.png" alt=""></a>
+                <a (click)="changeLanguage(1)" *ngIf="_languageService.currentLanguage!='english'"><img class="img-fluid" src="../../../assets/img/USA_B&W.png" alt=""></a>
             </li>
 
         </ul>
     </div>
 </nav>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]='{backdrop: false, ignoreBackdropClick: true}'>
+    <div class="modal-dialog modal-side modal-top-right" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+
+            </div>
+            <div class="modal-body">
+                <input mdbInput type="text" name="searchTerm" [(ngModel)]="searchTerm" id="searchTerm" class="form-control" placeholder="{{'searchPlaceholder' | language:_languageService.currentLanguage }}" (keydown)="search($event)">
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Buscar</button>
+            </div> -->
+        </div>
+    </div>
+</div>

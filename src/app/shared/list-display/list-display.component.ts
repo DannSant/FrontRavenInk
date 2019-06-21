@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InventoryItem } from 'src/app/models/inventoryItems';
 import { InventoryService } from 'src/app/services/inventory.service';
+import { LanguageConfigService } from '../../services/language-config.service';
 @Component({
   selector: 'app-list-display',
   templateUrl: './list-display.component.html',
@@ -16,7 +17,8 @@ export class ListDisplayComponent implements OnInit {
   @Input('list-display-name') listDisplayName: string;
 
   constructor(
-    public _inventoryService: InventoryService
+    public _inventoryService: InventoryService,
+    public _languageService:LanguageConfigService
   ) { }
 
   ngOnInit() {
@@ -30,5 +32,7 @@ export class ListDisplayComponent implements OnInit {
       }
     });
   }
+
+ 
 
 }

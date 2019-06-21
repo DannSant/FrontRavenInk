@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
+import { LanguageConfigService } from 'src/app/services/language-config.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     public _userService:UserService,
     public _alert:AlertService,
     public router:Router,
-    public activatedRoute:ActivatedRoute
+    public activatedRoute:ActivatedRoute,
+    public _languageService:LanguageConfigService
   ) { }
 
   ngOnInit() {

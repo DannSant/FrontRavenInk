@@ -17,8 +17,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Nombre para mostrar *</label>
-                            <input [(ngModel)]="list.display_name" name="display_name" type="text" class="form-control" id="display_name" placeholder="Descripcion del producto" required>
+                            <label for="description">Nombre para mostrar (español) *</label>
+                            <input [(ngModel)]="list.display_name" name="display_name" type="text" class="form-control" id="display_name" placeholder="Nombre para mostrar cuando la pagina esté en español" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Nombre para mostrar (inglés) *</label>
+                            <input [(ngModel)]="list.display_name_english" name="display_name_english" type="text" class="form-control" id="display_name_english" placeholder="Nombre para mostrar cuando la pagina esté en inglés" required>
                         </div>
 
                         <div class="form-group">

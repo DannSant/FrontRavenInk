@@ -17,7 +17,7 @@ export class BannerComponent implements OnInit {
 
   ngOnInit() {
     this._inventoryListsService.getCarouselItems().subscribe((resp:any)=>{
-      console.log(resp);
+      
       if(resp.ok){
         this.carouselItems=resp.data;
       }
