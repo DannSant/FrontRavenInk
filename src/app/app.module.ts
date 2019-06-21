@@ -37,6 +37,7 @@ import { CategoryService } from './services/category.service';
 import { SubcategoryService } from './services/subcategory.service';
 import { VerifyTokenGuard } from './services/guards/verify-token.guard';
 import { UserRoleService } from './services/user-role.service';
+import { InventoryListsService } from './services/inventory-lists.service';
 
 //Pipes
 import { UserRolePipe } from './pipes/user-role.pipe';
@@ -49,7 +50,14 @@ import { FirstWordPipe } from './pipes/first-word.pipe';
 import { SearchComponent } from './pages/search/search.component';
 import { FirstImagePipe } from './pipes/first-image.pipe';
 import { ArrayImagePipe } from './pipes/array-image.pipe';
+import { FooterComponent } from './shared/footer/footer.component';
+import { ListDisplayComponent } from './shared/list-display/list-display.component';
+import { InventoryListsComponent } from './pages/admin/inventory-lists/inventory-lists.component';
+import { InventoryListsDetailComponent } from './pages/admin/inventory-lists/inventory-lists-detail.component';
+import { ItemSelectorComponent } from './shared/item-selector/item-selector.component';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 
@@ -83,7 +91,12 @@ import { ArrayImagePipe } from './pipes/array-image.pipe';
     FirstWordPipe,
     SearchComponent,
     FirstImagePipe,
-    ArrayImagePipe
+    ArrayImagePipe,
+    FooterComponent,
+    ListDisplayComponent,
+    InventoryListsComponent,
+    InventoryListsDetailComponent,
+    ItemSelectorComponent
 
   ],
   imports: [
@@ -92,7 +105,8 @@ import { ArrayImagePipe } from './pipes/array-image.pipe';
     app_routing,
     FormsModule,
     HttpClientModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     UserService,
@@ -103,8 +117,10 @@ import { ArrayImagePipe } from './pipes/array-image.pipe';
     SubcategoryService,
     AdminGuardGuard,
     VerifyTokenGuard,
-    UserRoleService
+    UserRoleService,
+    InventoryListsService
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { InventoryListsService } from 'src/app/services/inventory-lists.service';
 
 @Component({
   selector: 'app-banner',
@@ -8,9 +9,19 @@ import { UserService } from '../../services/user.service';
 })
 export class BannerComponent implements OnInit {
 
-  constructor( public _userService:UserService) { }
+  carouselItems:any[]=[]
+  constructor( 
+    public _userService:UserService,
+    public _inventoryListsService:InventoryListsService
+    ) { }
 
   ngOnInit() {
+    this._inventoryListsService.getCarouselItems().subscribe((resp:any)=>{
+      console.log(resp);
+      if(resp.ok){
+        this.carouselItems=resp.data;
+      }
+    })
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryItem } from 'src/app/models/inventoryItems';
 import { InventoryService } from 'src/app/services/inventory.service';
+import { InventoryListsService } from 'src/app/services/inventory-lists.service';
 
 @Component({
   selector: 'app-home',
@@ -9,20 +10,23 @@ import { InventoryService } from 'src/app/services/inventory.service';
 })
 export class HomeComponent implements OnInit {
 
-  items: InventoryItem[] = [];
-  finishedLoading: boolean = false;
+ 
+
+  lists:any[]=[];
 
   constructor(
-    public _inventoryService: InventoryService
+    public _inventoryListsService: InventoryListsService
   ) { }
 
   ngOnInit() {
-    this.finishedLoading = false;
-    this._inventoryService.getInventoryItemsList("most_sold").subscribe((resp: any) => {
-      this.finishedLoading = true;
+   
+    this._inventoryListsService.getInventoryListsAll().subscribe((resp: any) => {
+      
       //console.log(resp);
       if (resp.ok) {
-        this.items = resp.data;
+        
+        this.lists = Object.values(resp.data);
+        //this.lists = resp.data;
       }
     });
   }

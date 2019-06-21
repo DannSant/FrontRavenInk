@@ -113,4 +113,9 @@ export class ItemViewComponent implements OnInit {
     return true;
   }
 
+  getOldPrice(){
+    let oldPrices = [80,90,100];
+    return oldPrices[Math.floor(Math.random() * oldPrices.length)];
+  }
+
 }

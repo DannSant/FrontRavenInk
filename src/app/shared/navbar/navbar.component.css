@@ -1,13 +1,18 @@
 .collapsed {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  transition: width 0.5s;
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    transition: width 0.5s;
 }
 
 .uncollapsed {
-  padding: 0 18px;
-  display: block;
-  overflow: hidden;
-  transition: width 0.5s;
+    padding: 0 18px;
+    display: block;
+    overflow: hidden;
+    transition: width 0.5s;
+}
+
+.icons-menu {
+    border-left: 5px;
+    border-left-style: inset;
 }

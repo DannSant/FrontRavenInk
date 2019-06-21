@@ -21,6 +21,8 @@ import { UsersDetailComponent } from "./pages/admin/users/users-detail.component
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { PwdChangeComponent } from "./pages/profile/pwd-change.component";
 import { SearchComponent } from "./pages/search/search.component";
+import { InventoryListsComponent } from './pages/admin/inventory-lists/inventory-lists.component';
+import { InventoryListsDetailComponent } from './pages/admin/inventory-lists/inventory-lists-detail.component';
 
 const app_routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -40,6 +42,16 @@ const app_routes: Routes = [
   {
     path: "inventoryDetail/:id",
     component: InventoryDetailComponent,
+    canActivate: [AdminGuardGuard, VerifyTokenGuard]
+  },
+  {
+    path: "inventoryList",
+    component: InventoryListsComponent,
+    canActivate: [AdminGuardGuard, VerifyTokenGuard]
+  },
+  {
+    path: "inventoryListDetail/:id",
+    component: InventoryListsDetailComponent,
     canActivate: [AdminGuardGuard, VerifyTokenGuard]
   },
   {

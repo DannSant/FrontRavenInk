@@ -1,44 +1,41 @@
-<div class="banner-bootom-w3-agileits">
-  <div class="container">
-    <div *ngIf="isEmpty(item)">
-      <div class="alert alert-warning" role="alert">No se han encontrado productos en la categoria
-        seleccionada</div>
-      <div class="loader" [ngStyle]="{'display:none': finishedLoading==true}"></div>
-    </div>
-    <div class="col-md-4 single-right-left ">
-      <!-- <div class="grid images_3_of_2">
+<div class="container" style="margin-top: 10px">
+    <div class="row">
+        <div *ngIf="isEmpty(item)">
+            <div class="alert alert-warning" role="alert">No se han encontrado el producto solicitado seleccionada
+            </div>
+            <div class="loader" [ngStyle]="{'display:none': finishedLoading==true}"></div>
+        </div>
+        <div class="col-md-4 single-right-left ">
+            <!-- <div class="grid images_3_of_2">
         <img class="zoom-img" style="width: 100%" src="../../../assets/img/items/{{item.img | firstImage}}?w=400"
           attr.data-zoom="../../../assets/img/items/{{item.img | firstImage}}?w=1200"
           onError="this.src='../../../../assets/img/items/no-image.jpg'">
       </div>-->
-      <div class="slideshow">
-        <div *ngFor="let imageUrl of item.img | arrayImage; let i = index">
-          <img src="../../../assets/img/items/{{imageUrl}}" [ngClass]="'zoom-img' + i"
-            [ngStyle]="{'opacity':getOpacity(i),'display':getDisplay(i)}"
-            attr.data-zoom="../../../assets/img/items/{{imageUrl}}?w=1200">
+            <div class="slideshow">
+                <div *ngFor="let imageUrl of item.img | arrayImage; let i = index">
+                    <img src="../../../assets/img/items/{{imageUrl}}" [ngClass]="'zoom-img' + i" [ngStyle]="{'opacity':getOpacity(i),'display':getDisplay(i)}" attr.data-zoom="../../../assets/img/items/{{imageUrl}}?w=1200">
+                </div>
+            </div>
+            <br>
+            <div class="slideshow-thumbnails">
+                <div *ngFor="let imageUrl of item.img | arrayImage; let i = index" class="slideshow-thumbnails-column" (click)="changeImage(i)">
+                    <img src="../../../assets/img/items/{{imageUrl}}" width="50">
+                </div>
+            </div>
         </div>
-      </div>
-      <br>
-      <div class="slideshow-thumbnails">
-        <div *ngFor="let imageUrl of item.img | arrayImage; let i = index" class="slideshow-thumbnails-column"
-          (click)="changeImage(i)">
-          <img src="../../../assets/img/items/{{imageUrl}}" width="50">
+        <div class="col-md-8 single-right-left simpleCart_shelfItem zoom-pane" style="background-color: rgba(255, 255, 255, 0.6)">
+            <h3>{{ item.item_name }}</h3>
+            <br>
+            <p>
+                <span class="item_price">${{ currentPrice }}</span>
+                <del>- ${{ currentPrice + getOldPrice() }}</del>
+            </p>
+            <br>
+            <div class="description">
+                <h5>{{ item.description }}</h5>
+            </div>
+            <br>
+            <button class="btn btn-primary" [routerLink]="['/cart',item.id]">Añadir al carrito</button>
         </div>
-      </div>
     </div>
-    <div class="col-md-8 single-right-left simpleCart_shelfItem zoom-pane">
-      <h3>{{ item.item_name }}</h3>
-      <br>
-      <p>
-        <span class="item_price">${{ currentPrice }}</span>
-        <del>- ${{ currentPrice + 150 }}</del>
-      </p>
-      <br>
-      <div class="description">
-        <h5>{{ item.description }}</h5>
-      </div>
-      <br>
-      <button class="btn btn-primary" [routerLink]="['/cart',item.id]">Añadir al carrito</button>
-    </div>
-  </div>
 </div>
