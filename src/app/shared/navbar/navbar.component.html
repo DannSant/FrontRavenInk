@@ -100,7 +100,7 @@
         <ul class="navbar-nav collapse navbar-collapse">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i *ngIf="!_userService.loggedUser" class="fas fa-user-alt fa-2x" style="color: tomato"></i>
+                    <a *ngIf="!_userService.loggedUser"><img class="img-fluid" src="../../../assets/img/04_Icon_person.png" alt=""></a>
                     <i *ngIf="_userService.loggedUser" class="fas fa-user-check fa-2x" style="color: yellowgreen"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -112,10 +112,10 @@
                 </div>
             </li>
             <li>
-                <a (click)="basicModal.show()"><i class="fas fa-search fa-2x"></i></a>
+                <a (click)="basicModal.show()"><img class="img-fluid" src="../../../assets/img/05_search.png" alt=""></a>
             </li>
             <li>
-                <a href=""><i class="fas fa-cart-plus fa-2x"></i></a>
+                <a routerLink="/cart"><img class="img-fluid" src="../../../assets/img/06_shopping cart.png" alt=""></a>
             </li>
             <li>
                 <a (click)="changeLanguage(0)" *ngIf="_languageService.currentLanguage=='spanish'"><img class="img-fluid" src="../../../assets/img/MX_color.png" alt=""></a>

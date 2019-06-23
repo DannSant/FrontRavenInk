@@ -3,6 +3,7 @@ import { AlertService } from "../../services/alert.service";
 import { InventoryService } from "../../services/inventory.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { InventoryItem } from "../../models/inventoryItems";
+import { LanguageConfigService } from '../../services/language-config.service';
 
 @Component({
   selector: "app-search",
@@ -16,6 +17,7 @@ export class SearchComponent implements OnInit {
     public _alert: AlertService,
     public _inventory: InventoryService,
     public activatedRoute: ActivatedRoute,
+    public _languageService:LanguageConfigService,
     public router: Router
   ) {}
 

@@ -50,6 +50,7 @@ export const LANGUAGES = {
         no_products_found:{spanish:"No se han encontrado productos buscados",english:"We werent able to find any products here. Try something else",},
         view:{spanish:"Ver",english:"View",},
         buy:{spanish:"Comprar",english:"Buy now",},
+        searching:{spanish:"Buscando",english:"Searching",},
 
         /*Login*/
         sigin:{spanish:"Iniciar Sesión",english:"Sign in",},        
