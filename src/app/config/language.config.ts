@@ -73,4 +73,14 @@ export const LANGUAGES = {
         register_enter_name:{spanish:"Ingresar nombre",english:"Enter name",},
         register_enter_address:{spanish:"Ingresar dirección donde quieras recibir tus productos",english:"Enter the address where you want to receive your products",},
         if_you_have_account:{spanish:"Si ya tienes cuenta",english:"If you already have an account",},
+
+        /*Footer*/
+        about_shopisle: {spanish:"Sobre Shopisle",english:"About Shopisle"},
+        recent_comments: {spanish:"Comentarios Recientes",english:"Recent Comments"},
+        top_rated_products: {spanish:"Productos Mejor Valorados",english:"Top Rated Products"},
+        product_categories: {spanish:"Categorias de productos",english:"Product Categories"},
+        about_shopisle_text: {spanish:"Los idiomas solo difieren en su pronunciación y sus palabras más comunes",english:"The Languages only differ in their pronunciation and their most common words"},
+        find_us_at: {spanish:"Tambien nos encuentras en",english:"You can also find us at"},
+        phone: {spanish:"Telefono",english:"Phone"},
+        all_rights: {spanish:"Todos los derechos reservados",english:"All Rights Reserved"},
 }

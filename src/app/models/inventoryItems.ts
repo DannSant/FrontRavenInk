@@ -12,7 +12,9 @@ export class InventoryItem {
     public existance?: number,
     public status?: string,
     public img?: string,
-    public subcategory?: string
+    public subcategory?: string,
+    public item_name_english?: string,
+    public description_english?:string
   ) {
 
   }

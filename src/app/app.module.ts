@@ -60,6 +60,7 @@ import { ItemSelectorComponent } from './shared/item-selector/item-selector.comp
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { LanguagePipe } from './pipes/language.pipe';
+import { LanguageDatabasePipe } from './pipes/language-database.pipe';
 
 
 
@@ -100,7 +101,8 @@ import { LanguagePipe } from './pipes/language.pipe';
     InventoryListsComponent,
     InventoryListsDetailComponent,
     ItemSelectorComponent,
-    LanguagePipe
+    LanguagePipe,
+    LanguageDatabasePipe
 
   ],
   imports: [

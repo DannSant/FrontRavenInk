@@ -11,8 +11,8 @@
                 <img class="card-img-top" src="../../../../assets/img/items/{{item.img | firstImage}}" alt="Card image cap" onError="this.src='../../../../assets/img/items/no-image.jpg'" />
 
                 <div class="card-body">
-                    <h5 class="card-title">{{item.item_name}}</h5>
-                    <p class="card-text">{{item.description}}</p>
+                    <h5 class="card-title">{{item | languageDatabase:_languageService.currentLanguage:'item_name'}}</h5>
+                    <p class="card-text">{{item | languageDatabase:_languageService.currentLanguage:'item_description'}}</p>
                     <button class="btn btn-primary" [routerLink]="['/item',item.id]">{{'view' | language:_languageService.currentLanguage }}</button>
                     <button class="btn btn-success" [routerLink]="['/cart',item.id]">{{'buy' | language:_languageService.currentLanguage }}</button>
                 </div>

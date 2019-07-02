@@ -1,13 +1,15 @@
 <div class="container" style="margin-top: 30px;">
     <h2> {{'searching' | language:_languageService.currentLanguage }}... '{{ searchTerm }}'</h2>
+    <div class="alert alert-warning" role="alert">{{'no_products_found' | language:_languageService.currentLanguage }}
+    </div>
     <div class="row">
         <div class="col-sm-6 col-md-4" *ngFor="let item of items">
             <div class="thumbnail">
                 <img class="card-img-top" src="../../../../assets/img/items/{{ item.code }}.jpg" alt="Card image cap" onError="this.src='../../../../assets/img/no-image.jpg'" />
 
                 <div class="caption">
-                    <h5>{{ item.item_name }}</h5>
-                    <p>{{ item.description }}</p>
+                    <h5 class="card-title">{{item | languageDatabase:_languageService.currentLanguage:'item_name'}}</h5>
+                    <p class="card-text">{{item | languageDatabase:_languageService.currentLanguage:'item_description'}}</p>
                     <button class="btn btn-primary" [routerLink]="['/item', item.id]">
             {{'view' | language:_languageService.currentLanguage }}
           </button>

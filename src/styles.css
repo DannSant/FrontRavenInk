@@ -15,6 +15,7 @@ body {
     background: url("assets/img/skulls.png");
     font-family: "Open Sans", sans-serif;
     padding: 0;
+    position: relative;
 }
 
 body a {
@@ -24,6 +25,12 @@ body a {
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
     -ms-transition: 0.5s all;
+}
+
+.contenedor {
+    position: relative;
+    padding-bottom: 24rem;
+    min-height: 100%;
 }
 
 a:hover {

@@ -77,20 +77,7 @@ export class InventoryService {
     return this.http.get(url).pipe(
       catchError(e => {
         console.log(e);
-        //let errorNumber:number = e.error.error.errno;
-        if (e.error.code) {
-          this._alert.showAlert(
-            "Error",
-            "No se han encontrado productos con ese termino",
-            "error"
-          );
-        } else {
-          this._alert.showAlert(
-            "Error",
-            "Ha ocurrido un error al obtener los productos, intentar de nuevo mas tarde ",
-            "error"
-          );
-        }
+        
         return of(e);
       })
     );
