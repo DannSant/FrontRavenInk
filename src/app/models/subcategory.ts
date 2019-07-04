@@ -3,6 +3,7 @@ export class Subcategory {
       public id?:number,
       public name?:string,
       public status?:string,
-      public category?:string
+      public category?:string,
+      public name_english?:string
   ){}
 }

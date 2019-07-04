@@ -38,7 +38,12 @@ export class CatalogComponent implements OnInit {
         if (resp.ok) {
           this.items = resp.data;
           if (resp.data.length > 0) {
-            this.subcategory = resp.data[0].subcategory_name;
+            if (this._languageService.currentLanguage=="spanish"){
+              this.subcategory = resp.data[0].subcategory_name;
+            }else {
+              this.subcategory=resp.data[0].subcategory_name_english;
+            }
+            
           }
         } else {
           this.items = [];
