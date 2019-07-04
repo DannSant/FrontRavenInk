@@ -5,6 +5,7 @@ import { AlertService } from "src/app/services/alert.service";
 import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import Drift from 'drift-zoom';
+import { LanguageConfigService } from '../../services/language-config.service';
 
 @Component({
   selector: "app-item-view",
@@ -24,7 +25,8 @@ export class ItemViewComponent implements OnInit {
     public _inventoryService: InventoryService,
     public _alert: AlertService,
     public activatedRoute: ActivatedRoute,
-    public _userService: UserService
+    public _userService: UserService,
+    public _languageService:LanguageConfigService
   ) { }
 
   ngOnInit() {

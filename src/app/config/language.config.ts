@@ -83,4 +83,8 @@ export const LANGUAGES = {
         find_us_at: {spanish:"Tambien nos encuentras en",english:"You can also find us at"},
         phone: {spanish:"Telefono",english:"Phone"},
         all_rights: {spanish:"Todos los derechos reservados",english:"All Rights Reserved"},
+
+        /* Item View*/
+        add_to_cart:{spanish:"Añadir al carrito",english:"Add to Cart"},
+        comments_item_view:{spanish:"Comentarios en el producto",english:"Comments on this product"},
 }
