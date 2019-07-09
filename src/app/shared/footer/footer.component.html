@@ -16,10 +16,8 @@
                     <span>{{'recent_comments' | language:_languageService.currentLanguage }}</span>
                 </div>
                 <ul>
-                    <li>codeinwp on Surplus Overalls</li>
-                    <li>codeinwp on White undershirt</li>
-                    <li>Gerhard on Mauve dress</li>
-                    <li>Maria on Blue & Red Shirt</li>
+                    <li *ngFor="let comment of lastRatings">{{comment.user_name}} on <a [routerLink]="['/item',comment.item_id]">{{comment.item_name}}</a></li>
+
                 </ul>
             </div>
             <div class="col-md-3">
@@ -27,11 +25,11 @@
                     <span>{{'top_rated_products' | language:_languageService.currentLanguage }}</span>
                 </div>
                 <ul>
-                    <li>Mauve dress
-                        <p style="color: yellow"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                    <li *ngFor="let item of bestItems">{{item.item_name}}
+                        <star-rating [value]="item.rating_promedio" checkedcolor="darkgoldenrod" uncheckedcolor="black" size="14px" readonly="true"></star-rating>
                     </li>
 
-                    <li>Surplus Overalls</li>
+
                 </ul>
             </div>
             <div class="col-md-3">

@@ -38,13 +38,58 @@
             <button class="btn btn-primary" [routerLink]="['/cart',item.id]">{{'add_to_cart' | language:_languageService.currentLanguage }}</button>
         </div>
     </div>
-    <div class="row single-right-left simpleCart_shelfItem">
+
+    <div class="row" style="margin-top: 3rem">
         <h3>{{'comments_item_view' | language:_languageService.currentLanguage }}</h3>
-        <div id="comment-list" class="col-md-6">
-
+    </div>
+    <div class="row">
+        <div class="col-md-6" *ngIf="ratingsOnProduct.length<=0">
+            <div class="alert alert-warning" role="alert">{{'empty_rating_comment_list' | language:_languageService.currentLanguage }}
+            </div>
         </div>
-        <div id=comment-form>
+        <div id="comment-list" class="col-md-6" *ngIf="ratingsOnProduct.length>0">
+            <div *ngFor="let comment of ratingsOnProduct">
+                <mdb-card style="margin: 5px">
+                    <mdb-card-body>
+                        <mdb-card-title>
+                            <h4>{{comment.user_name}}</h4> <span> {{comment.rating_date | date:'dd-M-yyyy HH:mm:ss'}}</span>
+                        </mdb-card-title>
+                        <mdb-card-text>{{comment.comment}}</mdb-card-text>
+                        <div class="flex-row">
+                            <p style="color: darkgoldenrod">
+                                <star-rating [value]="comment.rating" checkedcolor="darkgoldenrod" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+                            </p>
+                        </div>
+                    </mdb-card-body>
+                </mdb-card>
+            </div>
+        </div>
+        <div id=comment-form class="col-md-6">
+            <h5 *ngIf="userHasRated && !ratingReadOnly">{{'update_rating' | language:_languageService.currentLanguage }}</h5>
+            <form #f="ngForm" ngNativeValidate (ngSubmit)="postRating(f)">
+                <div class="form-group">
+                    <label for="comment">{{'rating_comment' | language:_languageService.currentLanguage }} *</label>
+                    <textarea [(ngModel)]="rating.comment" name="comment" type="text" class="form-control" id="comment" placeholder="{{'rating_comment_placeholder' | language:_languageService.currentLanguage }}" required></textarea>
+                </div>
 
+
+                <div class="form-group">
+                    <label for="status">{{'rating_form_label' | language:_languageService.currentLanguage }} *</label>
+                    <p style="color: darkgoldenrod">
+                        <star-rating [value]="rating.rating" checkedcolor="darkgoldenrod" uncheckedcolor="black" size="24px" [readonly]="ratingReadOnly" (rate)="onRate($event)"></star-rating>
+
+                    </p>
+                </div>
+                <button *ngIf="!userHasRated" type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fas fa-comments"></i>
+                          {{'rating_form_publish' | language:_languageService.currentLanguage }}
+                        </button>
+                <button *ngIf="userHasRated && !ratingReadOnly" type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fas fa-comments"></i>
+                            {{'update_rating_button' | language:_languageService.currentLanguage }}
+                        </button>
+                <button *ngIf="!ratingReadOnly" (click)="clearForm()" type="button" class="btn btn-warning waves-effect waves-light">{{'rating_form_clear' | language:_languageService.currentLanguage }}</button>
+            </form>
         </div>
 
     </div>

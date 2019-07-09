@@ -87,4 +87,12 @@ export const LANGUAGES = {
         /* Item View*/
         add_to_cart:{spanish:"Añadir al carrito",english:"Add to Cart"},
         comments_item_view:{spanish:"Comentarios en el producto",english:"Comments on this product"},
+        rating_comment_placeholder:{spanish:"Comentario de la valoracion, maximo 1200 caracteres",english:"Write a review comment, up to 1200 characters"},
+        rating_comment:{spanish:"Comentario",english:"Comment"},
+        rating_form_label:{spanish:"Valoración",english:"Rating"},
+        rating_form_publish:{spanish:"Publicar",english:"Publish"},
+        rating_form_clear:{spanish:"Limpiar",english:"Clear"},
+        empty_rating_comment_list:{spanish:"No hay comentarios aun en este producto",english:"There are no comments here yet"},
+        update_rating:{spanish:"Actualiza tu valoración",english:"Update your rating"},
+        update_rating_button:{spanish:"Actualizar",english:"Update"},
 }

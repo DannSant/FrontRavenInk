@@ -6,6 +6,7 @@ import { app_routing } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { RatingModule } from 'ng-starrating';
 
 //Components
 import { AppComponent } from './app.component';
@@ -61,6 +62,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { LanguagePipe } from './pipes/language.pipe';
 import { LanguageDatabasePipe } from './pipes/language-database.pipe';
+import { RatingService } from './services/rating.service';
 
 
 
@@ -112,6 +114,7 @@ import { LanguageDatabasePipe } from './pipes/language-database.pipe';
     FormsModule,
     HttpClientModule,
     NgxPayPalModule,
+    RatingModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [
@@ -125,7 +128,8 @@ import { LanguageDatabasePipe } from './pipes/language-database.pipe';
     VerifyTokenGuard,
     UserRoleService,
     InventoryListsService,
-    LanguageConfigService
+    LanguageConfigService,
+    RatingService
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]

@@ -41,6 +41,19 @@ export class CategoryService {
     }));
   }
 
+  getRandomCategories(){
+    let headers = new HttpHeaders({
+      'token':this._userService.token
+    });
+    let url = SERVICE_URL + "/category/random/3";
+    return this.http.get(url,{headers}).pipe(catchError(e =>{
+      console.log(e);
+      //let errorNumber:number = e.error.error.errno;
+     
+      return of(e)
+    }));
+  }
+
   getActiveCategories(){
     let headers = new HttpHeaders({
       'token':this._userService.token

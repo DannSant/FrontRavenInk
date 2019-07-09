@@ -2,10 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { InventoryItem } from "../../models/inventoryItems";
 import { InventoryService } from "../../services/inventory.service";
 import { AlertService } from "src/app/services/alert.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import Drift from 'drift-zoom';
 import { LanguageConfigService } from '../../services/language-config.service';
+import { Rating } from '../../models/rating';
+import { StarRatingComponent } from "ng-starrating";
+import { RatingService } from "src/app/services/rating.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-item-view",
@@ -21,13 +25,23 @@ export class ItemViewComponent implements OnInit {
 
   imageZoomArray: any[];
 
+  rating:Rating={};
+  userHasRated:boolean=false;
+  ratingReadOnly:boolean=false;
+  ratingsOnProduct:Rating[] = [];
+
+
   constructor(
     public _inventoryService: InventoryService,
     public _alert: AlertService,
     public activatedRoute: ActivatedRoute,
     public _userService: UserService,
-    public _languageService:LanguageConfigService
-  ) { }
+    public _languageService:LanguageConfigService,
+    public _ratingService:RatingService,
+    public router:Router
+  ) {
+   
+   }
 
   ngOnInit() {
 
@@ -50,10 +64,45 @@ export class ItemViewComponent implements OnInit {
             this.currentPrice = this.item.public_price;
           }
 
-
-          this.getSuggetsted(id);
+          this.getProductComments();
+          //this.getSuggetsted(id);
         }
       });
+    });
+  }
+
+  getProductComments(){
+    this._ratingService.getCommentsByProduct(this.item.id).subscribe(resp=>{
+      if(resp.ok){
+        this.ratingsOnProduct = resp.data;
+      }
+      this.getUserComment();
+    });
+  }
+
+  getUserComment(){
+    this._ratingService.getCommentByUserProduct(this._userService.loggedUser.id,this.item.id).subscribe(resp=>{
+      if(resp.ok){
+        
+        this.rating = resp.data[0];       
+        this.userHasRated=true;
+        let ratingDate = new Date(this.rating.rating_date);       
+        let currentDate = new Date();
+        const diffTime = Math.abs(currentDate.getTime() - ratingDate.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        
+        if(diffDays>15){
+          this.ratingReadOnly=true;
+        }else {
+          this.ratingReadOnly=false;
+        }
+        
+      }else {
+        this.rating.rating=0;
+        this.userHasRated = false;
+      }
+      
+      
     });
   }
 
@@ -116,8 +165,41 @@ export class ItemViewComponent implements OnInit {
   }
 
   getOldPrice(){
-    let oldPrices = [80,90,100];
-    return oldPrices[Math.floor(Math.random() * oldPrices.length)];
+    return 90;
+    //let oldPrices = [80,90,100];
+    //return oldPrices[Math.floor(Math.random() * oldPrices.length)];
+  }
+
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+    
+    this.rating.rating=$event.newValue;    
+    
+  }
+  clearForm(){
+    this.rating = {};
+    this.rating.rating=0;
+  }
+
+  postRating(f:NgForm){
+    if (f.invalid){
+      this._alert.showAlert("Error","Faltan campos por capturar","error");
+      return;
+    }
+    if(this.rating.rating<=0){
+      this._alert.showAlert("Error","Debes elegir un valor entre 1 y 5 de valoración","error");
+      return;
+    }
+
+    this.rating.user_id=this._userService.loggedUser.id;
+    this.rating.item_id=this.item.id;
+
+    this._ratingService.postRatingOnProduct(this.rating).subscribe(resp =>{
+      if (resp.ok){
+        this._alert.showAlert("Gracias","Tu valoración se ha guardado con éxito","success");
+        //this.router.navigate(["/item",this.item.id]);
+        window.location.reload();
+      }
+    });
   }
 
 }
