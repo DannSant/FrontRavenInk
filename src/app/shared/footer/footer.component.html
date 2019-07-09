@@ -37,9 +37,8 @@
                     <span>{{'product_categories' | language:_languageService.currentLanguage }}</span>
                 </div>
                 <ul>
-                    <li>Blouse</li>
-                    <li>Clothing</li>
-                    <li>Dresses</li>
+                    <li *ngFor="let category of randomCategories">{{category | languageDatabase:_languageService.currentLanguage:'category_name'}}</li>
+
                 </ul>
             </div>
         </div>
