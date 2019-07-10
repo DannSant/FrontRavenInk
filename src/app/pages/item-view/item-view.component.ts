@@ -66,6 +66,9 @@ export class ItemViewComponent implements OnInit {
 
           this.getProductComments();
           //this.getSuggetsted(id);
+        }else {
+          console.log("Error al obtener item");
+          console.log(resp);
         }
       });
     });
@@ -81,6 +84,10 @@ export class ItemViewComponent implements OnInit {
   }
 
   getUserComment(){
+    if(!this._userService.loggedUser){
+      this.getSuggetsted(this.item.id);
+      return;
+    }
     this._ratingService.getCommentByUserProduct(this._userService.loggedUser.id,this.item.id).subscribe(resp=>{
       if(resp.ok){
         
@@ -101,6 +108,8 @@ export class ItemViewComponent implements OnInit {
         this.rating.rating=0;
         this.userHasRated = false;
       }
+
+      this.getSuggetsted(this.item.id);
       
       
     });
