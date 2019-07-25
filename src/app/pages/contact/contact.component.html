@@ -1,0 +1,101 @@
+<div class="top-banner">
+    
+    <div class="top-banner-bg">
+        <img class="img-fluid" height="30%" src="../../../../assets/img/fondo_provisional.png" >
+
+        <div class="top-banner-about permanent-marker-font">
+           <p>{{'about_1' | language:_languageService.currentLanguage }}</p>
+           <p>{{'about_2' | language:_languageService.currentLanguage }}</p>
+        </div>
+
+        <div class="top-banner-title ">
+            <img class="img-fluid" src="../../../../assets/img/Contactanos.png" >
+        </div>
+        <div class="top-banner-subtitle">
+            <img class="img-fluid"  src="../../../../assets/img/dudas.png" >
+        </div>
+    </div>
+    
+</div>
+
+<div class="container animated fadeIn permanent-marker-font" style="margin-top: 30px; margin-bottom: 5rem">
+  <div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">      
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <form #f="ngForm" ngNativeValidate (ngSubmit)="sendContactMessage(f)">
+                <div class="form-group">
+                  <label for="name">{{'contact_name' | language:_languageService.currentLanguage }} *</label>
+                  <input [(ngModel)]="emailBody.name" name="name" type="text" class="form-control" id="name"
+                   required>
+                </div>
+    
+                <div class="form-group">
+                  <label for="email">{{'contact_email' | language:_languageService.currentLanguage }} *</label>
+                  <input [(ngModel)]="emailBody.email" name="email" type="text" class="form-control" id="email"
+                    required>
+                </div>
+    
+                <div class="form-group">
+                  <label for="subject">{{'contact_subject' | language:_languageService.currentLanguage }} *</label>
+                  <input [(ngModel)]="emailBody.subject" name="subject" type="text" class="form-control" id="subject"
+                     required>
+                </div>
+    
+                <div class="form-group">
+                  <label for="message">{{'contact_message' | language:_languageService.currentLanguage }} *</label>
+                  <textarea [(ngModel)]="emailBody.message" name="message" type="text" class="form-control" id="message"
+                    required></textarea>
+                </div>
+    
+                
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                  
+                    {{'contact_send' | language:_languageService.currentLanguage }}
+                </button>
+              
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 contact-social-phone">
+        <p> {{'contact_social_networks' | language:_languageService.currentLanguage }}</p>
+        <ul class="social-nav model-3d-0 footer-social w3_agile_social">
+            <li class="share"></li>
+            <li>
+                <a href="https://www.facebook.com/Raven-Ink-Store-348896548904163/" target="_blank">
+                    <div class="front">
+                        <img class="img-fluid" src="../../../assets/img/01_Facebook.png" alt="">
+                    </div>
+                    <div class="back">
+                        <img class="img-fluid" src="../../../assets/img/01_Facebook.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/raveninkstore" target="_blank">
+                    <div class="front">
+                        <img class="img-fluid" src="../../../assets/img/02_Twitter.png" alt="">
+                    </div>
+                    <div class="back">
+                        <img class="img-fluid" src="../../../assets/img/02_Twitter.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/raveninkstore" target="_blank">
+                    <div class="front">
+                        <img class="img-fluid" src="../../../assets/img/03_Instagram.png" alt="">
+                    </div>
+                    <div class="back">
+                        <img class="img-fluid" src="../../../assets/img/03_Instagram.png" alt="">
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <p> {{'contact_phone' | language:_languageService.currentLanguage }} 55 28287432</p>
+      </div>
+    </div>
+<div>

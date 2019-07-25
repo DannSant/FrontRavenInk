@@ -3,17 +3,19 @@
     <div *ngIf="items.length<=0">
         <div class="alert alert-warning" role="alert"> {{'no_products_found' | language:_languageService.currentLanguage }}
         </div>
-        <div class="loader" [ngStyle]="{'display:none': finishedLoading==true}"></div>
+        <div *ngIf="!finishedLoading" class="loader" [ngStyle]="{'display:none': finishedLoading==true}"></div>
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-4" *ngFor="let item of items">
             <div class="card" style="margin: 5px">
-                <img class="card-img-top" src="../../../../assets/img/items/{{item.img | firstImage}}" alt="Card image cap" onError="this.src='../../../../assets/img/items/no-image.jpg'">
+                <img [routerLink]="['/item',item.id]" style="cursor: pointer" class="card-img-top" src="../../../../assets/img/items/{{item.img | firstImage}}" alt="Card image cap" onError="this.src='../../../../assets/img/items/no-image.jpg'">
                 <div class="card-body">
                     <h5 class="card-title">{{item | languageDatabase:_languageService.currentLanguage:'item_name'}}</h5>
                     <p class="card-text">{{item | languageDatabase:_languageService.currentLanguage:'item_description'}}</p>
-                    <button class="btn btn-primary" [routerLink]="['/item',item.id]">{{'view' | language:_languageService.currentLanguage }}</button>
-                    <button class="btn btn-success" [routerLink]="['/cart',item.id]">{{'buy' | language:_languageService.currentLanguage }}</button>
+                    <div class='buttons-container'>
+                        <img width="40%" height="58px" class="view-button" [routerLink]="['/item',item.id]" src="../../../../assets/img/ver_bt.png"/>
+                        <img width="40%" class="view-button" [routerLink]="['/cart',item.id]" src="../../../../assets/img/comprar_bt.png"/> 
+                    </div>
                 </div>
             </div>
         </div>

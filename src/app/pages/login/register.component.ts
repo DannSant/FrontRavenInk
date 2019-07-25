@@ -52,8 +52,15 @@ export class RegisterComponent implements OnInit {
           "Tu registro esta completo, ya puedes empezar a comprar",
           "success"
         );
+        this.login()
         this.router.navigate(["/home"]);
       }
+    });
+  }
+
+  login(){
+    this._userService.login(this.user.email,this.user.password,false).subscribe((resp)=>{
+      
     });
   }
 }

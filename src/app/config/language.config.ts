@@ -95,4 +95,15 @@ export const LANGUAGES = {
         empty_rating_comment_list:{spanish:"No hay comentarios aun en este producto",english:"There are no comments here yet"},
         update_rating:{spanish:"Actualiza tu valoración",english:"Update your rating"},
         update_rating_button:{spanish:"Actualizar",english:"Update"},
+
+        /* Contact*/
+        about_1:{spanish:"Somos una marca mexicana enfocada en cubrir todos los aspectos de la vida con diseños originales.",english:"We are a Mexican brand focused on covering all aspects of life with original designs."},
+        about_2:{spanish:"Nuestros productos son hechos por artistas y artesanos mexicanos",english:"Our products are made by Mexican artists and craftsmen"},
+        contact_name:{spanish:"Nombre",english:"Name",},
+        contact_email:{spanish:"Correo",english:"Email",},
+        contact_subject:{spanish:"Asunto",english:"Subject",},
+        contact_message:{spanish:"Mensaje",english:"Message",},
+        contact_send:{spanish:"Enviar",english:"Send",},
+        contact_social_networks:{spanish:"Tambien nos encuentras en nuestras redes",english:"You also find us in our networks",},
+        contact_phone:{spanish:"Telefono de contacto",english:"Telephone contact",},
 }

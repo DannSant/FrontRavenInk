@@ -33,6 +33,52 @@ body a {
     min-height: 100%;
 }
 
+/*Mine*/
+.buttons-container {
+    text-align: center;
+    display: block;
+}
+
+.view-button {
+    cursor: pointer;
+    margin-right: 5px; 
+}
+
+.top-banner-about{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    
+}
+.top-banner-about p{
+    margin: 20px
+}
+.top-banner-title {
+    position: absolute;
+    top: 18%;
+    left: 33%;
+}
+.top-banner-subtitle {
+    position: absolute;
+    top: 28%;
+    left: 30%;
+}
+.contact-social-phone {
+    top: 35%;
+    left: 10%;
+    display: block;
+}
+.contact-social-phone ul{    
+    padding: 20px;
+    padding-left: 90px;
+    border: #000
+    
+}
+
+.permanent-marker-font{
+    font-family: 'Permanent Marker', cursive;
+}
+
 a:hover {
     text-decoration: none;
 }

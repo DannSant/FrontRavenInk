@@ -32,6 +32,7 @@ export class NavbarComponent implements OnInit {
     if (event.key === "Enter") {
       this.basicModal.hide()
       this._router.navigate(["search", this.searchTerm]);
+      this.searchTerm="";
     }
   }
 

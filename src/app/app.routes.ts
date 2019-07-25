@@ -23,6 +23,7 @@ import { PwdChangeComponent } from "./pages/profile/pwd-change.component";
 import { SearchComponent } from "./pages/search/search.component";
 import { InventoryListsComponent } from './pages/admin/inventory-lists/inventory-lists.component';
 import { InventoryListsDetailComponent } from './pages/admin/inventory-lists/inventory-lists-detail.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const app_routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -34,6 +35,7 @@ const app_routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "login/:redirect/:id", component: LoginComponent },
   { path: "register", component: RegisterComponent },
+  { path: "contact", component: ContactComponent },
   {
     path: "inventory",
     component: InventoryComponent,

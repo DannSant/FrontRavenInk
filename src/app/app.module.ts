@@ -63,6 +63,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { LanguagePipe } from './pipes/language.pipe';
 import { LanguageDatabasePipe } from './pipes/language-database.pipe';
 import { RatingService } from './services/rating.service';
+import { ContactComponent } from './pages/contact/contact.component';
+import { EmailService } from './services/email.service';
 
 
 
@@ -104,7 +106,8 @@ import { RatingService } from './services/rating.service';
     InventoryListsDetailComponent,
     ItemSelectorComponent,
     LanguagePipe,
-    LanguageDatabasePipe
+    LanguageDatabasePipe,
+    ContactComponent
 
   ],
   imports: [
@@ -129,7 +132,8 @@ import { RatingService } from './services/rating.service';
     UserRoleService,
     InventoryListsService,
     LanguageConfigService,
-    RatingService
+    RatingService,
+    EmailService
   ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
