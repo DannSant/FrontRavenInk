@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { RatingModule } from 'ng-starrating';
+import { ReCaptchaModule } from 'angular2-recaptcha';
 
 //Components
 import { AppComponent } from './app.component';
@@ -118,6 +119,7 @@ import { EmailService } from './services/email.service';
     HttpClientModule,
     NgxPayPalModule,
     RatingModule,
+    ReCaptchaModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [

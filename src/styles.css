@@ -45,9 +45,10 @@ body a {
 }
 
 .top-banner-about{
+    font-size: 45px;
     position: absolute;
-    top: 10%;
-    left: 30%;
+    top: 2%;
+    left: 10%;
     
 }
 .top-banner-about p{
@@ -56,12 +57,12 @@ body a {
 .top-banner-title {
     position: absolute;
     top: 18%;
-    left: 33%;
+    left: 36%;
 }
 .top-banner-subtitle {
     position: absolute;
     top: 28%;
-    left: 30%;
+    left: 33%;
 }
 .contact-social-phone {
     top: 35%;

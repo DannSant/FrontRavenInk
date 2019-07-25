@@ -13,8 +13,10 @@
                     <h5 class="card-title">{{item | languageDatabase:_languageService.currentLanguage:'item_name'}}</h5>
                     <p class="card-text">{{item | languageDatabase:_languageService.currentLanguage:'item_description'}}</p>
                     <div class='buttons-container'>
-                        <img width="40%" height="58px" class="view-button" [routerLink]="['/item',item.id]" src="../../../../assets/img/ver_bt.png"/>
-                        <img width="40%" class="view-button" [routerLink]="['/cart',item.id]" src="../../../../assets/img/comprar_bt.png"/> 
+                        <img *ngIf="_languageService.currentLanguage=='spanish'" width="40%" height="58px" class="view-button" [routerLink]="['/item',item.id]" src="../../../../assets/img/ver_bt.png"/>
+                        <img *ngIf="_languageService.currentLanguage=='spanish'" width="40%" class="view-button" [routerLink]="['/cart',item.id]" src="../../../../assets/img/comprar_bt.png"/> 
+                        <img *ngIf="_languageService.currentLanguage=='english'" width="40%" height="58px" class="view-button" [routerLink]="['/item',item.id]" src="../../../../assets/img/see_more_bt.png"/>
+                        <img *ngIf="_languageService.currentLanguage=='english'" width="40%" class="view-button" [routerLink]="['/cart',item.id]" src="../../../../assets/img/buy_now_bt.png"/> 
                     </div>
                 </div>
             </div>
