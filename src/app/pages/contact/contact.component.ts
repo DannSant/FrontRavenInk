@@ -27,6 +27,10 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleCorrectCaptcha(event){
+    //console.log(event);
+  }
+
   sendContactMessage(f:NgForm){
 
     let token = this.captcha.getResponse();
